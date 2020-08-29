@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "container:"
+      name = "Project-Meta">
+      <FileRef
+         location = "group:README.md">
+      </FileRef>
+      <FileRef
+         location = "group:CHANGELOG.md">
+      </FileRef>
+      <FileRef
+         location = "group:Package.swift">
+      </FileRef>
+      <FileRef
+         location = "group:LICENSE">
+      </FileRef>
+      <FileRef
+         location = "group:CODEOWNERS">
+      </FileRef>
+      <FileRef
+         location = "group:jazzy.command">
+      </FileRef>
+      <FileRef
+         location = "group:.swiftlint.yml">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:/Volumes/Development/RiftValley/RVS_GeneralObserver/RVS_GeneralObserver.xcodeproj">
+   </FileRef>
+</Workspace>

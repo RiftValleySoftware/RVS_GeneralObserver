@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>RVS_GeneralObservableProtocol Protocol Reference</title>
+    <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="../js/jquery.min.js" defer></script>
+    <script src="../js/jazzy.js" defer></script>
+    
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a name="//apple_ref/swift/Protocol/RVS_GeneralObservableProtocol" class="dashAnchor"></a>
+    <a title="RVS_GeneralObservableProtocol Protocol Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="../index.html">RVS_BTDriver Public API Doumentation</a> (100% documented)</p>
+        <p class="header-right"><a href="https://github.com/RiftValleySoftware/RVS_GeneralObserver"><img src="../img/gh.png"/>View on GitHub</a></p>
+        <p class="header-right">
+          <form role="search" action="../search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </p>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="../index.html"> Reference</a>
+        <img id="carat" src="../img/carat.png" />
+        RVS_GeneralObservableProtocol Protocol Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Extensions/Array.html">Array</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Protocols/RVS_GeneralObservableProtocol.html">RVS_GeneralObservableProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="../Protocols/RVS_GeneralObserverProtocol.html">RVS_GeneralObserverProtocol</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            <h1>RVS_GeneralObservableProtocol</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">RVS_GeneralObservableProtocol</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+
+                </div>
+              </div>
+            <p>This protocol makes any entity observable, by giving it the infrastructure to subscribe and track observers. It&rsquo;s up to the implementor to
+actually use this to send messages.</p>
+
+<p>Observables have to be classes. Observers don&rsquo;t need to be classes.</p>
+
+          </section>
+          <section class="section task-group-section">
+            <div class="task-group">
+              <ul>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:19RVS_GeneralObserver0a1_B18ObservableProtocolP9observersSayAA0a1_bcE0_pGvp"></a>
+                    <a name="//apple_ref/swift/Property/observers" class="dashAnchor"></a>
+                    <a class="token" href="#/s:19RVS_GeneralObserver0a1_B18ObservableProtocolP9observersSayAA0a1_bcE0_pGvp">observers</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>REQUIRED</p>
+
+<p>This is an Array of observers that subscribe to the observable instance.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">observers</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/RVS_GeneralObserverProtocol.html">RVS_GeneralObserverProtocol</a></span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:19RVS_GeneralObserver0a1_B18ObservableProtocolP8observer_12didSubscribeyAA0a1_bcE0_p_SbtF"></a>
+                    <a name="//apple_ref/swift/Method/observer(_:didSubscribe:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:19RVS_GeneralObserver0a1_B18ObservableProtocolP8observer_12didSubscribeyAA0a1_bcE0_p_SbtF">observer(_:<wbr>didSubscribe:<wbr>)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>OPTIONAL</p>
+
+<p>This is method that is called when observers subscribe or unsubscribe. The default does nothing.
+This is called AFTER the fact, and only if the subscription status changed.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p>The default does nothing.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">observer</span><span class="p">(</span><span class="n">_</span> <span class="nv">observer</span><span class="p">:</span> <span class="kt"><a href="../Protocols/RVS_GeneralObserverProtocol.html">RVS_GeneralObserverProtocol</a></span><span class="p">,</span> <span class="nv">didSubscribe</span><span class="p">:</span> <span class="kt">Bool</span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>didSubscribe</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>True, if this was a subscription. False, if not.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:19RVS_GeneralObserver0a1_B18ObservableProtocolP9subscribeyAA0a1_bcE0_pSgAaE_pF"></a>
+                    <a name="//apple_ref/swift/Method/subscribe(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:19RVS_GeneralObserver0a1_B18ObservableProtocolP9subscribeyAA0a1_bcE0_pSgAaE_pF">subscribe(_:<wbr>)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>OPTIONAL</p>
+
+<p>This is how an observer subscribes to an Observable.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p>The default will simply append the observer to our list.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">func</span> <span class="nf">subscribe</span><span class="p">(</span><span class="n">_</span> <span class="nv">observer</span><span class="p">:</span> <span class="kt"><a href="../Protocols/RVS_GeneralObserverProtocol.html">RVS_GeneralObserverProtocol</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/RVS_GeneralObserverProtocol.html">RVS_GeneralObserverProtocol</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The subscribed element, if the subscription worked (or if the observer is already subscribed). Nil, otherwise. Can be ignored.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:19RVS_GeneralObserver0a1_B18ObservableProtocolP11unsubscribeyAA0a1_bcE0_pSgAaE_pF"></a>
+                    <a name="//apple_ref/swift/Method/unsubscribe(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:19RVS_GeneralObserver0a1_B18ObservableProtocolP11unsubscribeyAA0a1_bcE0_pSgAaE_pF">unsubscribe(_:<wbr>)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>OPTIONAL</p>
+
+<p>This is how an observer unsubscribes from an Observable.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p>The default will simply remove the observer from our list.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">func</span> <span class="nf">unsubscribe</span><span class="p">(</span><span class="n">_</span> <span class="nv">observer</span><span class="p">:</span> <span class="kt"><a href="../Protocols/RVS_GeneralObserverProtocol.html">RVS_GeneralObserverProtocol</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt"><a href="../Protocols/RVS_GeneralObserverProtocol.html">RVS_GeneralObserverProtocol</a></span><span class="p">?</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The unsubscribed element, if the unsubscription worked (or if the observer is already unsubscribed). Nil, otherwise. Can be ignored.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:19RVS_GeneralObserver0a1_B18ObservableProtocolP14unsubscribeAllSayAA0a1_bcE0_pGyF"></a>
+                    <a name="//apple_ref/swift/Method/unsubscribeAll()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:19RVS_GeneralObserver0a1_B18ObservableProtocolP14unsubscribeAllSayAA0a1_bcE0_pGyF">unsubscribeAll()</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>OPTIONAL</p>
+
+<p>Unsubscribes all currently subscribed entities.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p>Default simply unsubscribes all the elements.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">func</span> <span class="nf">unsubscribeAll</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Protocols/RVS_GeneralObserverProtocol.html">RVS_GeneralObserverProtocol</a></span><span class="p">]</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>The subscribers that were removed. Can be ignored.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:19RVS_GeneralObserver0a1_B18ObservableProtocolP13amISubscribedySbAA0a1_bcE0_pF"></a>
+                    <a name="//apple_ref/swift/Method/amISubscribed(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:19RVS_GeneralObserver0a1_B18ObservableProtocolP13amISubscribedySbAA0a1_bcE0_pF">amISubscribed(_:<wbr>)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>OPTIONAL</p>
+
+<p>An Observer can use this to see if they are already subscribed to an Observable.</p>
+
+<p>In the default implementation, this is called in the subscription/unsubscritption execution context, so that will be the thread used for the callback.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p>The default will run through the Array, looking at UUIDs.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">amISubscribed</span><span class="p">(</span><span class="n">_</span> <span class="nv">observer</span><span class="p">:</span> <span class="kt"><a href="../Protocols/RVS_GeneralObserverProtocol.html">RVS_GeneralObserverProtocol</a></span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>True, if subscribed.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-08-29)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</div>
+</html>
