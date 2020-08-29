@@ -189,9 +189,9 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
     // MARK: - Subscription-Tracking Observer (As A Struct) -
     /* ################################################################################################################################## */
     /**
-     This simply declares a UUID.
+     This is a class (not a struct), so we can deal with it as references.
      */
-    struct SubTrackerObserver: RVS_GeneralObserverProtocol {
+    class SubTrackerObserver: RVS_GeneralObserverProtocol {
         /* ############################################################## */
         /**
          The required UUID. It is set up with an initializer, and left alone.
@@ -214,7 +214,7 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
 
          - parameter: The Observable we've subscribed to.
          */
-        mutating func subscribedTo(_ inObservableInstance: RVS_GeneralObservableProtocol) {
+        func subscribedTo(_ inObservableInstance: RVS_GeneralObservableProtocol) {
             if let inputObservable = inObservableInstance as? BaseObservable {
                 subscriptions.append(inputObservable)
             }
@@ -230,13 +230,31 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
 
          - parameter: The Observable we've unsubscribed from.
          */
-        mutating func unsubscribedFrom(_ inObservableInstance: RVS_GeneralObservableProtocol) {
+        func unsubscribedFrom(_ inObservableInstance: RVS_GeneralObservableProtocol) {
             if let inputObservable = inObservableInstance as? BaseObservable {
                 for elem in subscriptions.enumerated() where elem.element == inputObservable {
                     subscriptions.remove(at: elem.offset)
                     break
                 }
             }
+        }
+        
+        /* ################################################################## */
+        /**
+         This unsubs the observer from all of its subscriptions.
+         
+         - returns: An Array, of all the observables it unsubbed from.
+         */
+        func unsubscribeAll() -> [RVS_GeneralObservableProtocol] {
+            var ret = [RVS_GeneralObservableProtocol]()
+            
+            subscriptions.forEach {
+                if nil != $0.unsubscribe(self) {
+                    ret.append($0)
+                }
+            }
+            
+            return ret
         }
     }
     
@@ -254,8 +272,7 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
         var observers: [SubTrackerObserver] = []
         
         for _ in 0..<numberOfObservers {
-            let observer = SubTrackerObserver()
-            observers.append(observer)
+            observers.append(SubTrackerObserver())
         }
 
         for _ in 0..<numberOfObservables {
@@ -276,6 +293,18 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
                 XCTAssertTrue(observable.amISubscribed(observer))
             }
         }
+
+        if let observer = observers.first {
+            let observersArray = observer.unsubscribeAll()
+            
+            XCTAssertEqual(numberOfObservers, observersArray.count)
+            
+            observersArray.forEach {
+                XCTAssertFalse($0.amISubscribed(observer))
+            }
+        } else {
+            XCTFail("Test Has A Bad Problem")
+        }
         
         observables.last?.unsubscribeAll()
         
@@ -284,12 +313,14 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
                 XCTAssertFalse(observer.amISubscribed(observable))
                 XCTAssertFalse(observable.amISubscribed(observer))
             }
+        } else {
+            XCTFail("Test Has A Bad Problem")
         }
         
         observers.forEach { observer in
             observer.subscriptions.forEach { observable in
-                XCTAssertTrue(observer.amISubscribed(observable))
-                XCTAssertTrue(observable.amISubscribed(observer))
+                XCTAssertFalse(observer.amISubscribed(observable))
+                XCTAssertFalse(observable.amISubscribed(observer))
             }
         }
     }

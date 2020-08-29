@@ -69,6 +69,8 @@ public protocol RVS_GeneralObservableProtocol: AnyObject {
     /* ################################################################## */
     /**
      This is an Array of observers that subscribe to the observable instance.
+     
+     It should be noted that this would be a strong reference, if the observers were classes.
      */
     var observers: [RVS_GeneralObserverProtocol] { get set }
     
@@ -146,7 +148,7 @@ extension RVS_GeneralObservableProtocol {
         
         observers.append(inObserver)
         observer(inObserver, didSubscribe: true)
-        inObserver.unsubscribedFrom(self)
+        inObserver.subscribedTo(self)
 
         return inObserver
     }
@@ -160,7 +162,7 @@ extension RVS_GeneralObservableProtocol {
         for elem in observers.enumerated() where elem.element.uuid == inObserver.uuid {
             observers.remove(at: elem.offset)
             observer(inObserver, didSubscribe: false)
-            inObserver.subscribedTo(self)
+            inObserver.unsubscribedFrom(self)
             return inObserver
         }
         
