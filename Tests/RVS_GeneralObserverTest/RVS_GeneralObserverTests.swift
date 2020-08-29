@@ -28,14 +28,30 @@ import XCTest
 /* ###################################################################################################################################### */
 /**
  */
-class RVS_GoTennaDriverTests: XCTestCase {
+class RVS_GeneralObserverBasicTests: XCTestCase {
     /* ################################################################################################################################## */
     // MARK: - Simple Observable, With Expectation -
     /* ################################################################################################################################## */
     /**
      This class allows an expectation to be associated, so it can be "ticked off."
      */
-    class BaseObservable: RVS_GeneralObservableProtocol {
+    class BaseObservable: RVS_GeneralObservableProtocol, Equatable {
+        /* ############################################################## */
+        /**
+         This allows us to compare instances, via UUIDs.
+         
+         - parameter lhs: The left-hand-side argument.
+         - parameter rhs: The right-hand-side argument.
+         - returns: True, if they are equal.
+         */
+        static func == (lhs: BaseObservable, rhs: BaseObservable) -> Bool { lhs.uuid == rhs.uuid }
+        
+        /* ############################################################## */
+        /**
+         This is for our internal testing.
+         */
+        let uuid = UUID()
+
         /* ############################################################## */
         /**
          This is the required observers Array.
@@ -77,6 +93,14 @@ class RVS_GoTennaDriverTests: XCTestCase {
      This simply declares a UUID.
      */
     struct BaseObserver: RVS_GeneralObserverProtocol, Equatable {
+        /* ############################################################## */
+        /**
+         This allows us to compare instances, via UUIDs.
+         
+         - parameter lhs: The left-hand-side argument.
+         - parameter rhs: The right-hand-side argument.
+         - returns: True, if they are equal.
+         */
         static func == (lhs: Self, rhs: Self) -> Bool { lhs.uuid == rhs.uuid }
         
         /* ############################################################## */
@@ -84,14 +108,8 @@ class RVS_GoTennaDriverTests: XCTestCase {
          The required UUID. It is set up with an initializer, and left alone.
          */
         let uuid = UUID()
-        
-        /* ################################################################## */
-        /**
-         This will hold the subcriptions we have to Observables.
-         */
-        var subscriptions: [RVS_GeneralObservableProtocol] = []
     }
-    
+
     /* ################################################################## */
     /**
      This just subscribes one single observer, and makes sure that its handled properly.
@@ -165,5 +183,114 @@ class RVS_GoTennaDriverTests: XCTestCase {
         for observer in observerArray { XCTAssertFalse(observable.amISubscribed(observer)) }
 
         wait(for: [basicTestExpectationUnsubscribe], timeout: 0.1)
+    }
+    
+    /* ################################################################################################################################## */
+    // MARK: - Subscription-Tracking Observer (As A Struct) -
+    /* ################################################################################################################################## */
+    /**
+     This simply declares a UUID.
+     */
+    struct SubTrackerObserver: RVS_GeneralObserverProtocol {
+        /* ############################################################## */
+        /**
+         The required UUID. It is set up with an initializer, and left alone.
+         */
+        let uuid = UUID()
+        
+        /* ############################################################## */
+        /**
+         This is where we will track our subscriptions.
+         */
+        var subscriptions: [BaseObservable] = []
+
+        /* ################################################################## */
+        /**
+         This is called after being subscribed to an Observable.
+         
+         This is called after the Observable's `observer(_:, didSubscribe:)` method was called.
+
+         In the default implementation, this is called in the subscription execution context, so that will be the thread used for the callback.
+
+         - parameter: The Observable we've subscribed to.
+         */
+        mutating func subscribedTo(_ inObservableInstance: RVS_GeneralObservableProtocol) {
+            if let inputObservable = inObservableInstance as? BaseObservable {
+                subscriptions.append(inputObservable)
+            }
+        }
+        
+        /* ################################################################## */
+        /**
+         This is called after being unsubscribed from an Observable.
+         
+         This is called after the Observable's `observer(_:, didSubscribe:)` method was called.
+         
+         In the default implementation, this is called in the unsubscription execution context, so that will be the thread used for the callback.
+
+         - parameter: The Observable we've unsubscribed from.
+         */
+        mutating func unsubscribedFrom(_ inObservableInstance: RVS_GeneralObservableProtocol) {
+            if let inputObservable = inObservableInstance as? BaseObservable {
+                for elem in subscriptions.enumerated() where elem.element == inputObservable {
+                    subscriptions.remove(at: elem.offset)
+                    break
+                }
+            }
+        }
+    }
+    
+    /* ################################################################## */
+    /**
+     This test has a matrix of subscribers and observables that we load and drain.
+     
+     This tests a particular use case (where we test a concrete implementation of a subscription tracker), as well as the tool, itself.
+     */
+    func testSubscriberTrackedObservablesAndObservers() {
+        let numberOfObservers: Int = 10
+        let numberOfObservables: Int = 10
+        
+        var observables: [BaseObservable] = []
+        var observers: [SubTrackerObserver] = []
+        
+        for _ in 0..<numberOfObservers {
+            let observer = SubTrackerObserver()
+            observers.append(observer)
+        }
+
+        for _ in 0..<numberOfObservables {
+            observables.append(BaseObservable())
+            observers.forEach { observables.last?.subscribe($0) }
+        }
+        
+        observables.forEach { observable in
+            observers.forEach { observer in
+                XCTAssertTrue(observer.amISubscribed(observable))
+                XCTAssertTrue(observable.amISubscribed(observer))
+            }
+        }
+        
+        observers.forEach { observer in
+            observer.subscriptions.forEach { observable in
+                XCTAssertTrue(observer.amISubscribed(observable))
+                XCTAssertTrue(observable.amISubscribed(observer))
+            }
+        }
+        
+        observables.last?.unsubscribeAll()
+        
+        if let observable = observables.last {
+            observers.forEach { observer in
+                XCTAssertFalse(observer.amISubscribed(observable))
+                XCTAssertFalse(observable.amISubscribed(observer))
+            }
+        }
+        
+        observers.forEach { observer in
+            observer.subscriptions.forEach { observable in
+                XCTAssertTrue(observer.amISubscribed(observable))
+                XCTAssertTrue(observable.amISubscribed(observer))
+            }
+        }
     }
 }

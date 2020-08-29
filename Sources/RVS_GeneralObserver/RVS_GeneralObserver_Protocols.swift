@@ -63,30 +63,20 @@ extension Array where Element: RVS_GeneralObserverProtocol {
  Observables have to be classes. Observers don't need to be classes.
  */
 public protocol RVS_GeneralObservableProtocol: AnyObject {
+    /* ################################################################################################################################## */
+    // MARK: - REQUIRED PROPERTIES
+    /* ################################################################################################################################## */
     /* ################################################################## */
     /**
-     REQUIRED
-     
      This is an Array of observers that subscribe to the observable instance.
      */
     var observers: [RVS_GeneralObserverProtocol] { get set }
     
+    /* ################################################################################################################################## */
+    // MARK: - OPTIONAL METHODS
+    /* ################################################################################################################################## */
     /* ################################################################## */
     /**
-     OPTIONAL
-     
-     This is method that is called when observers subscribe or unsubscribe. The default does nothing.
-     This is called AFTER the fact, and only if the subscription status changed.
-     
-     - parameter: The Observer that subscribed or unsubscribed.
-     - parameter didSubscribe: True, if this was a subscription. False, if not.
-     */
-    func observer(_ observer: RVS_GeneralObserverProtocol, didSubscribe: Bool)
-    
-    /* ################################################################## */
-    /**
-     OPTIONAL
-     
      This is how an observer subscribes to an Observable.
      
      - parameter: The observer entity.
@@ -94,12 +84,10 @@ public protocol RVS_GeneralObservableProtocol: AnyObject {
      - returns: The subscribed element, if the subscription worked (or if the observer is already subscribed). Nil, otherwise. Can be ignored.
      */
     @discardableResult
-    func subscribe(_ observer: RVS_GeneralObserverProtocol) -> RVS_GeneralObserverProtocol?
+    func subscribe(_: RVS_GeneralObserverProtocol) -> RVS_GeneralObserverProtocol?
     
     /* ################################################################## */
     /**
-     OPTIONAL
-     
      This is how an observer unsubscribes from an Observable.
      
      - parameter: The observer entity.
@@ -107,12 +95,10 @@ public protocol RVS_GeneralObservableProtocol: AnyObject {
      - returns: The unsubscribed element, if the unsubscription worked (or if the observer is already unsubscribed). Nil, otherwise. Can be ignored.
      */
     @discardableResult
-    func unsubscribe(_ observer: RVS_GeneralObserverProtocol) -> RVS_GeneralObserverProtocol?
+    func unsubscribe(_: RVS_GeneralObserverProtocol) -> RVS_GeneralObserverProtocol?
     
     /* ################################################################## */
     /**
-     OPTIONAL
-     
      Unsubscribes all currently subscribed entities.
      
      - returns: The subscribers that were removed. Can be ignored.
@@ -122,8 +108,6 @@ public protocol RVS_GeneralObservableProtocol: AnyObject {
     
     /* ################################################################## */
     /**
-     OPTIONAL
-     
      An Observer can use this to see if they are already subscribed to an Observable.
      
      In the default implementation, this is called in the subscription/unsubscritption execution context, so that will be the thread used for the callback.
@@ -132,7 +116,20 @@ public protocol RVS_GeneralObservableProtocol: AnyObject {
      
      - returns: True, if subscribed.
      */
-    func amISubscribed(_ observer: RVS_GeneralObserverProtocol) -> Bool
+    func amISubscribed(_: RVS_GeneralObserverProtocol) -> Bool
+    
+    /* ################################################################################################################################## */
+    // MARK: - OPTIONAL CALLBACKS
+    /* ################################################################################################################################## */
+    /* ################################################################## */
+    /**
+     This is method that is called when observers subscribe or unsubscribe. The default does nothing.
+     This is called AFTER the fact, and only if the subscription status changed.
+     
+     - parameter: The Observer that subscribed or unsubscribed.
+     - parameter didSubscribe: True, if this was a subscription. False, if not.
+     */
+    func observer(_: RVS_GeneralObserverProtocol, didSubscribe: Bool)
 }
 
 /* ###################################################################################################################################### */
@@ -141,14 +138,9 @@ public protocol RVS_GeneralObservableProtocol: AnyObject {
 extension RVS_GeneralObservableProtocol {
     /* ################################################################## */
     /**
-     The default does nothing.
-     */
-    public func observer(_ observer: RVS_GeneralObserverProtocol, didSubscribe: Bool) { }
-
-    /* ################################################################## */
-    /**
      The default will simply append the observer to our list.
      */
+    @discardableResult
     public func subscribe(_ inObserver: RVS_GeneralObserverProtocol) -> RVS_GeneralObserverProtocol? {
         guard !amISubscribed(inObserver) else { return nil }
         
@@ -163,9 +155,8 @@ extension RVS_GeneralObservableProtocol {
     /**
      The default will simply remove the observer from our list.
      */
+    @discardableResult
     public func unsubscribe(_ inObserver: RVS_GeneralObserverProtocol) -> RVS_GeneralObserverProtocol? {
-        guard amISubscribed(inObserver) else { return nil }
-        
         for elem in observers.enumerated() where elem.element.uuid == inObserver.uuid {
             observers.remove(at: elem.offset)
             observer(inObserver, didSubscribe: false)
@@ -190,16 +181,14 @@ extension RVS_GeneralObservableProtocol {
     /**
      Default simply unsubscribes all the elements.
      */
-    public func unsubscribeAll() -> [RVS_GeneralObserverProtocol] {
-        var ret: [RVS_GeneralObserverProtocol] = []
-        
-        observers.forEach {
-            ret.append($0)
-            unsubscribe($0)
-        }
-        
-        return ret
-    }
+    @discardableResult
+    public func unsubscribeAll() -> [RVS_GeneralObserverProtocol] { observers.compactMap { unsubscribe($0) } }
+    
+    /* ################################################################## */
+    /**
+     The default does nothing.
+     */
+    public func observer(_: RVS_GeneralObserverProtocol, didSubscribe: Bool) { }
 }
 
 /* ###################################################################################################################################### */
@@ -208,10 +197,11 @@ extension RVS_GeneralObservableProtocol {
 /**
  */
 public protocol RVS_GeneralObserverProtocol {
+    /* ################################################################################################################################## */
+    // MARK: - REQUIRED PROPERTIES
+    /* ################################################################################################################################## */
     /* ################################################################## */
     /**
-     REQUIRED
-     
      This is a unique ID for this Observer.
      
      If you are an observer, then you MUST supply a unique ID that remains constant throughout the lifetime of the instance.
@@ -224,20 +214,33 @@ public protocol RVS_GeneralObserverProtocol {
      */
     var uuid: UUID { get }
     
+    /* ################################################################################################################################## */
+    // MARK: - OPTIONAL METHODS
+    /* ################################################################################################################################## */
     /* ################################################################## */
     /**
-     OPTIONAL
-     
      This will tell us whether or not we are subscribed to the given observable.
      
      - parameter: The Observable we're testing.
      */
-    func amISubscribed(_ inObservable: RVS_GeneralObservableProtocol) -> Bool
+    func amISubscribed(_: RVS_GeneralObservableProtocol) -> Bool
     
     /* ################################################################## */
     /**
-     OPTIONAL
+     This is how an observer unsubscribes itself from an Observable.
      
+     - parameter: The Observable from which we're unsubscribing.
+
+     - returns: True, if the unsubscription was successful.
+     */
+    @discardableResult
+    func unsubscribeFrom(_: RVS_GeneralObservableProtocol) -> Bool
+
+    /* ################################################################################################################################## */
+    // MARK: - OPTIONAL CALLBACKS
+    /* ################################################################################################################################## */
+    /* ################################################################## */
+    /**
      This is called after being subscribed to an Observable.
      
      This is called after the Observable's `observer(_:, didSubscribe:)` method was called.
@@ -246,12 +249,10 @@ public protocol RVS_GeneralObserverProtocol {
 
      - parameter: The Observable we've subscribed to.
      */
-    func subscribedTo(_ inObservable: RVS_GeneralObservableProtocol)
+    func subscribedTo(_: RVS_GeneralObservableProtocol)
     
     /* ################################################################## */
     /**
-     OPTIONAL
-     
      This is called after being unsubscribed from an Observable.
      
      This is called after the Observable's `observer(_:, didSubscribe:)` method was called.
@@ -260,7 +261,7 @@ public protocol RVS_GeneralObserverProtocol {
 
      - parameter: The Observable we've unsubscribed from.
      */
-    func unsubscribedFrom(_ inObservable: RVS_GeneralObservableProtocol)
+    func unsubscribedFrom(_: RVS_GeneralObservableProtocol)
 }
 
 /* ###################################################################################################################################### */
@@ -275,6 +276,12 @@ extension RVS_GeneralObserverProtocol {
      */
     public func amISubscribed(_ inObservable: RVS_GeneralObservableProtocol) -> Bool { inObservable.amISubscribed(self) }
     
+    /* ################################################################## */
+    /**
+     Default simply unsubscribes itself, using the Observable's method.
+     */
+    public func unsubscribeFrom(_ inObservable: RVS_GeneralObservableProtocol) -> Bool { nil != inObservable.unsubscribe(self) }
+
     /* ################################################################## */
     /**
      Default does nothing.
