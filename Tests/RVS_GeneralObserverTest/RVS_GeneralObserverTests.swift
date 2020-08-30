@@ -184,14 +184,8 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
 
         wait(for: [basicTestExpectationUnsubscribe], timeout: 0.1)
     }
-    
-    /* ################################################################################################################################## */
-    // MARK: - Subscription-Tracking Observer (As A Struct) -
-    /* ################################################################################################################################## */
-    /**
-     This is a class (not a struct), so we can deal with it as references.
-     */
-    class SubTrackerObserver: RVS_GeneralObserverProtocol {
+
+    class SubTrackerObserver: RVS_GeneralObserverSubTrackerProtocol {
         /* ############################################################## */
         /**
          The required UUID. It is set up with an initializer, and left alone.
@@ -202,61 +196,7 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
         /**
          This is where we will track our subscriptions.
          */
-        var subscriptions: [BaseObservable] = []
-
-        /* ################################################################## */
-        /**
-         This is called after being subscribed to an Observable.
-         
-         This is called after the Observable's `observer(_:, didSubscribe:)` method was called.
-
-         In the default implementation, this is called in the subscription execution context, so that will be the thread used for the callback.
-
-         - parameter: The Observable we've subscribed to.
-         */
-        func subscribedTo(_ inObservableInstance: RVS_GeneralObservableProtocol) {
-            if let inputObservable = inObservableInstance as? BaseObservable {
-                subscriptions.append(inputObservable)
-            }
-        }
-        
-        /* ################################################################## */
-        /**
-         This is called after being unsubscribed from an Observable.
-         
-         This is called after the Observable's `observer(_:, didSubscribe:)` method was called.
-         
-         In the default implementation, this is called in the unsubscription execution context, so that will be the thread used for the callback.
-
-         - parameter: The Observable we've unsubscribed from.
-         */
-        func unsubscribedFrom(_ inObservableInstance: RVS_GeneralObservableProtocol) {
-            if let inputObservable = inObservableInstance as? BaseObservable {
-                for elem in subscriptions.enumerated() where elem.element == inputObservable {
-                    subscriptions.remove(at: elem.offset)
-                    break
-                }
-            }
-        }
-        
-        /* ################################################################## */
-        /**
-         This unsubs the observer from all of its subscriptions.
-         
-         - returns: An Array, of all the observables it unsubbed from.
-         */
-        @discardableResult
-        func unsubscribeAll() -> [RVS_GeneralObservableProtocol] {
-            var ret = [RVS_GeneralObservableProtocol]()
-            
-            subscriptions.forEach {
-                if nil != $0.unsubscribe(self) {
-                    ret.append($0)
-                }
-            }
-            
-            return ret
-        }
+        var subscriptions: [RVS_GeneralObservableProtocol] = []
     }
     
     /* ################################################################## */
@@ -273,7 +213,7 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
         let numberOfObservers: Int = 10
         let numberOfObservables: Int = 10
         
-        var observables: [BaseObservable] = []
+        var observables: [RVS_GeneralObservableProtocol] = []
         var observers: [SubTrackerObserver] = []
         
         for _ in 0..<numberOfObservers {
@@ -380,16 +320,20 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
             observers.forEach { observables.last?.subscribe($0) }
         }
         
-        let unsubbedObservables = observers.first?.unsubscribeAll()
-        
-        for index in 0..<(observables.count - 1) {
-            XCTAssertEqual(observables[index], unsubbedObservables?[index] as? BaseObservable)
-        }
+        if  let unsubbedObservables = observers.first?.unsubscribeAll(),
+            !observables.isEmpty,
+            !unsubbedObservables.isEmpty {
+            for index in 0..<(observables.count - 1) {
+                XCTAssertEqual(observables[index], unsubbedObservables[index] as? BaseObservable)
+            }
 
-        observers.last?.unsubscribeAll()
-        
-        for index in 1..<(observables.count - 1) {
-            XCTAssertEqual(observables[index], unsubbedObservables?[index] as? BaseObservable)
+            observers.last?.unsubscribeAll()
+            
+            for index in 1..<(observables.count - 1) {
+                XCTAssertEqual(observables[index], unsubbedObservables[index] as? BaseObservable)
+            }
+        } else {
+            XCTFail("Test Has A Bad Problem")
         }
         
         XCTAssertEqual(0, observers.first?.subscriptions.count)

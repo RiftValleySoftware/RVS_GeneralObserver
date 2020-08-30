@@ -30,7 +30,7 @@ import Foundation
  
  It isn't particularly efficient, but we're not talking huge Arrays, here.
  */
-extension Array where Element: RVS_GeneralObserverProtocol {
+public extension Array where Element: RVS_GeneralObserverProtocol {
     /* ################################################################## */
     /**
      This allows us to treat an Array like a Dictionary.
@@ -38,7 +38,7 @@ extension Array where Element: RVS_GeneralObserverProtocol {
      - parameter: The UUID String for the element we want.
      - returns: Either the element, or nil.
      */
-    public subscript(_ inUUIDString: String) -> Element? {
+    subscript(_ inUUIDString: String) -> Element? {
         for elem in self where elem.uuid.uuidString == inUUIDString { return elem }
         return nil
     }
@@ -50,7 +50,36 @@ extension Array where Element: RVS_GeneralObserverProtocol {
      - parameter: The UUID String for the element we want.
      - returns: Either the element, or nil.
      */
-    public subscript(_ inUUID: UUID) -> Element? { self[inUUID.uuidString] }
+    subscript(_ inUUID: UUID) -> Element? { self[inUUID.uuidString] }
+}
+
+/* ###################################################################################################################################### */
+// MARK: - Special Array Extension for Observerables -
+/* ###################################################################################################################################### */
+/**
+ This is the same thing, for observables.
+ */
+public extension Array where Element: RVS_GeneralObservableProtocol {
+    /* ################################################################## */
+    /**
+     This allows us to treat an Array like a Dictionary.
+     
+     - parameter: The UUID String for the element we want.
+     - returns: Either the element, or nil.
+     */
+    subscript(_ inUUIDString: String) -> Element? {
+        for elem in self where elem.uuid.uuidString == inUUIDString { return elem }
+        return nil
+    }
+    
+    /* ################################################################## */
+    /**
+     This allows us to treat an Array like a Dictionary.
+     
+     - parameter: The UUID String for the element we want.
+     - returns: Either the element, or nil.
+     */
+    subscript(_ inUUID: UUID) -> Element? { self[inUUID.uuidString] }
 }
 
 /* ###################################################################################################################################### */
@@ -66,6 +95,20 @@ public protocol RVS_GeneralObservableProtocol: AnyObject {
     /* ################################################################################################################################## */
     // MARK: - REQUIRED PROPERTIES
     /* ################################################################################################################################## */
+    /* ################################################################## */
+    /**
+     This is a unique ID for this Observer.
+     
+     If you are an observer, then you MUST supply a unique ID that remains constant throughout the lifetime of the instance.
+     
+     It must be declared as a stored property, and initialized with UUID(). After that, leave it alone.
+     
+     It should look like this, in your implementation:
+     
+     `let uuid = UUID()`
+     */
+    var uuid: UUID { get }
+    
     /* ################################################################## */
     /**
      This is an Array of observers that subscribe to the observable instance.
@@ -149,6 +192,10 @@ extension RVS_GeneralObservableProtocol {
         observers.append(inObserver)
         observer(inObserver, didSubscribe: true)
         inObserver.subscribedTo(self)
+        // In the special case of this being the subscription tracker, we call its internal management method.
+        if let internalSub = inObserver as? RVS_GeneralObserverSubTrackerProtocol {
+            internalSub.internalSubscribedTo(self)
+        }
 
         return inObserver
     }
@@ -163,6 +210,10 @@ extension RVS_GeneralObservableProtocol {
             observers.remove(at: elem.offset)
             observer(inObserver, didSubscribe: false)
             inObserver.unsubscribedFrom(self)
+            // In the special case of this being the subscription tracker, we call its internal management method.
+            if let internalSub = inObserver as? RVS_GeneralObserverSubTrackerProtocol {
+                internalSub.internalUnsubscribedFrom(self)
+            }
             return inObserver
         }
         
@@ -269,8 +320,6 @@ public protocol RVS_GeneralObserverProtocol {
 /* ###################################################################################################################################### */
 // MARK: -
 /* ###################################################################################################################################### */
-/**
- */
 extension RVS_GeneralObserverProtocol {
     /* ################################################################## */
     /**
@@ -296,4 +345,110 @@ extension RVS_GeneralObserverProtocol {
      Default does nothing.
      */
     public func unsubscribedFrom(_: RVS_GeneralObservableProtocol) { }
+}
+
+/* ################################################################################################################################## */
+// MARK: - Subscription-Tracking Observer Protocol -
+/* ################################################################################################################################## */
+/**
+ This is a class protocol, so we can mutate the properties in the protocol extension, and we won't have the issue of unlinked references.
+ */
+public protocol RVS_GeneralObserverSubTrackerProtocol: class, RVS_GeneralObserverProtocol {
+    /* ############################################################## */
+    /**
+     This is where we will track our subscriptions.
+     */
+    var subscriptions: [RVS_GeneralObservableProtocol] { get set }
+
+    /* ################################################################## */
+    /**
+     This is called after being subscribed to an Observable.
+     
+     This is called after the Observable's `observer(_:, didSubscribe:)` method was called.
+
+     In the default implementation, this is called in the subscription execution context, so that will be the thread used for the callback.
+
+     - parameter: The Observable we've subscribed to.
+     */
+    func internalSubscribedTo(_ inObservableInstance: RVS_GeneralObservableProtocol)
+    
+    /* ################################################################## */
+    /**
+     This is called after being unsubscribed from an Observable.
+     
+     This is called after the Observable's `observer(_:, didSubscribe:)` method was called.
+     
+     In the default implementation, this is called in the unsubscription execution context, so that will be the thread used for the callback.
+
+     - parameter: The Observable we've unsubscribed from.
+     */
+    func internalUnsubscribedFrom(_ inObservableInstance: RVS_GeneralObservableProtocol)
+    
+    /* ################################################################## */
+    /**
+     This unsubs the observer from all of its subscriptions.
+     
+     - returns: An Array, of all the observables it unsubbed from.
+     */
+    @discardableResult
+    func unsubscribeAll() -> [RVS_GeneralObservableProtocol]
+}
+
+/* ################################################################################################################################## */
+// MARK: - Subscription-Tracking Observer (As A Struct) -
+/* ################################################################################################################################## */
+extension RVS_GeneralObserverSubTrackerProtocol {
+    /* ################################################################## */
+    /**
+     This is called after being subscribed to an Observable.
+     
+     This is a method that is unique to this protocol, and is used for internal management.
+     
+     This is called after the Observable's `observer(_:, didSubscribe:)` method was called.
+
+     In the default implementation, this is called in the subscription execution context, so that will be the thread used for the callback.
+
+     - parameter: The Observable we've subscribed to.
+     */
+    internal func internalSubscribedTo(_ inObservableInstance: RVS_GeneralObservableProtocol) {
+        subscriptions.append(inObservableInstance)
+    }
+    
+    /* ################################################################## */
+    /**
+     This is called after being unsubscribed from an Observable.
+     
+     This is a method that is unique to this protocol, and is used for internal management.
+
+     This is called after the Observable's `observer(_:, didSubscribe:)` method was called.
+     
+     In the default implementation, this is called in the unsubscription execution context, so that will be the thread used for the callback.
+
+     - parameter: The Observable we've unsubscribed from.
+     */
+    internal func internalUnsubscribedFrom(_ inObservableInstance: RVS_GeneralObservableProtocol) {
+        for elem in subscriptions.enumerated() where elem.element.uuid == inObservableInstance.uuid {
+            subscriptions.remove(at: elem.offset)
+            break
+        }
+    }
+    
+    /* ################################################################## */
+    /**
+     This unsubs the observer from all of its subscriptions.
+     
+     - returns: An Array, of all the observables it unsubbed from.
+     */
+    @discardableResult
+    public func unsubscribeAll() -> [RVS_GeneralObservableProtocol] {
+        var ret = [RVS_GeneralObservableProtocol]()
+        
+        subscriptions.forEach {
+            if nil != $0.unsubscribe(self) {
+                ret.append($0)
+            }
+        }
+        
+        return ret
+    }
 }
