@@ -24,9 +24,10 @@ import XCTest
 @testable import RVS_GeneralObserver
 
 /* ###################################################################################################################################### */
-// MARK: -
+// MARK: - General Observable and Observer Tests.
 /* ###################################################################################################################################### */
 /**
+ These tests are designed to give a fairly basic stressing of the mechanics of subscription management, in the General Observer Infrastructure.
  */
 class RVS_GeneralObserverBasicTests: XCTestCase {
     /* ################################################################################################################################## */
@@ -48,7 +49,7 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
         
         /* ############################################################## */
         /**
-         This is for our internal testing.
+         The required UUID. It is set up with an initializer, and left alone.
          */
         let uuid = UUID()
 
@@ -328,6 +329,18 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
                 }
 
                 if let unsubbedTwo = observers.last?.unsubscribeAll() {
+                    observers.forEach {
+                        if !$0.subscriptions.isEmpty {
+                            XCTAssertEqual(numberOfObservers, $0.subscriptions.count)
+                        }
+                    }
+                    
+                    observables.forEach {
+                        if !$0.observers.isEmpty {
+                            XCTAssertEqual(numberOfObservers - 2, $0.observers.count)
+                        }
+                    }
+                    
                     XCTAssertEqual(numberOfObservables, unsubbedTwo.count)
                     XCTAssertEqual(0, observers.first?.subscriptions.count)
                     XCTAssertEqual(0, observers.last?.subscriptions.count)
