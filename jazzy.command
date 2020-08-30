@@ -8,6 +8,7 @@ jazzy   --readme ./README-API.md \
         --github_url https://github.com/RiftValleySoftware/RVS_GeneralObserver \
         --title RVS_BTDriver\ Public\ API\ Doumentation \
         --min_acl public \
+        --theme fullwidth \
         --build-tool-arguments -scheme,RVS_GeneralObserver
 cp icon.png docs/icon.png
 
