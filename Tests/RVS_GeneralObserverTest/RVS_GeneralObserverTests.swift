@@ -320,17 +320,28 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
             observers.forEach { observables.last?.subscribe($0) }
         }
         
-        if  let unsubbedObservables = observers.first?.unsubscribeAll(),
-            !observables.isEmpty,
-            !unsubbedObservables.isEmpty {
-            for index in 0..<(observables.count - 1) {
-                XCTAssertEqual(observables[index], unsubbedObservables[index] as? BaseObservable)
-            }
+        if  !observables.isEmpty {
+            if let unsubbedObservables = observers.first?.unsubscribeAll() {
+                XCTAssertEqual(numberOfObservables, unsubbedObservables.count)
+                for index in 0..<(observables.count - 1) {
+                    XCTAssertEqual(observables[index], unsubbedObservables[index] as? BaseObservable)
+                }
 
-            observers.last?.unsubscribeAll()
-            
-            for index in 1..<(observables.count - 1) {
-                XCTAssertEqual(observables[index], unsubbedObservables[index] as? BaseObservable)
+                if let unsubbedTwo = observers.last?.unsubscribeAll() {
+                    XCTAssertEqual(numberOfObservables, unsubbedTwo.count)
+                    XCTAssertEqual(0, observers.first?.subscriptions.count)
+                    XCTAssertEqual(0, observers.last?.subscriptions.count)
+                    XCTAssertEqual(numberOfObservers, observers[1].subscriptions.count)
+                    XCTAssertEqual(numberOfObservers, observers[observers.count - 2].subscriptions.count)
+                } else {
+                    XCTFail("Nil response from unsub.")
+                }
+                
+                for index in 1..<(observables.count - 1) {
+                    XCTAssertEqual(observables[index], unsubbedObservables[index] as? BaseObservable)
+                }
+            } else {
+                XCTFail("Nil response from unsub.")
             }
         } else {
             XCTFail("Test Has A Bad Problem")

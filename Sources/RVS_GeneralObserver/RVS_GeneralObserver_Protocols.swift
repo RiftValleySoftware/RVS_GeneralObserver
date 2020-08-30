@@ -20,7 +20,7 @@ CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFT
 The Great Rift Valley Software Company: https://riftvalleysoftware.com
 */
 
-import Foundation
+import Foundation   // Required for UUIDs
 
 /* ###################################################################################################################################### */
 // MARK: - Special Array Extension for Observers -
@@ -90,6 +90,8 @@ public extension Array where Element: RVS_GeneralObservableProtocol {
  actually use this to send messages.
  
  Observables have to be classes. Observers don't need to be classes.
+ 
+ There are two required components: a UUID, which needs to remain constant during the lifetime of the instance, and an Array of observers.
  */
 public protocol RVS_GeneralObservableProtocol: AnyObject {
     /* ################################################################################################################################## */
@@ -178,7 +180,7 @@ public protocol RVS_GeneralObservableProtocol: AnyObject {
 }
 
 /* ###################################################################################################################################### */
-// MARK: - Default Observable
+// MARK: - Default Implementation -
 /* ###################################################################################################################################### */
 extension RVS_GeneralObservableProtocol {
     /* ################################################################## */
@@ -245,9 +247,10 @@ extension RVS_GeneralObservableProtocol {
 }
 
 /* ###################################################################################################################################### */
-// MARK: -
+// MARK: - The General Observer protocol -
 /* ###################################################################################################################################### */
 /**
+ This protocol allows any entity to become an observer. The only required component is a UUID.
  */
 public protocol RVS_GeneralObserverProtocol {
     /* ################################################################################################################################## */
@@ -318,7 +321,7 @@ public protocol RVS_GeneralObserverProtocol {
 }
 
 /* ###################################################################################################################################### */
-// MARK: -
+// MARK: - Default Implementation -
 /* ###################################################################################################################################### */
 extension RVS_GeneralObserverProtocol {
     /* ################################################################## */
@@ -364,6 +367,8 @@ public protocol RVS_GeneralObserverSubTrackerProtocol: class, RVS_GeneralObserve
     /**
      This is called after being subscribed to an Observable.
      
+     This is a method that is unique to this protocol, and is used for internal management.
+
      This is called after the Observable's `observer(_:, didSubscribe:)` method was called.
 
      In the default implementation, this is called in the subscription execution context, so that will be the thread used for the callback.
@@ -376,6 +381,8 @@ public protocol RVS_GeneralObserverSubTrackerProtocol: class, RVS_GeneralObserve
     /**
      This is called after being unsubscribed from an Observable.
      
+     This is a method that is unique to this protocol, and is used for internal management.
+
      This is called after the Observable's `observer(_:, didSubscribe:)` method was called.
      
      In the default implementation, this is called in the unsubscription execution context, so that will be the thread used for the callback.
@@ -395,20 +402,12 @@ public protocol RVS_GeneralObserverSubTrackerProtocol: class, RVS_GeneralObserve
 }
 
 /* ################################################################################################################################## */
-// MARK: - Subscription-Tracking Observer (As A Struct) -
+// MARK: - Default Implementation -
 /* ################################################################################################################################## */
 extension RVS_GeneralObserverSubTrackerProtocol {
     /* ################################################################## */
     /**
-     This is called after being subscribed to an Observable.
-     
-     This is a method that is unique to this protocol, and is used for internal management.
-     
-     This is called after the Observable's `observer(_:, didSubscribe:)` method was called.
-
-     In the default implementation, this is called in the subscription execution context, so that will be the thread used for the callback.
-
-     - parameter: The Observable we've subscribed to.
+     Default simply adds the observable to our list.
      */
     internal func internalSubscribedTo(_ inObservableInstance: RVS_GeneralObservableProtocol) {
         subscriptions.append(inObservableInstance)
@@ -416,15 +415,7 @@ extension RVS_GeneralObserverSubTrackerProtocol {
     
     /* ################################################################## */
     /**
-     This is called after being unsubscribed from an Observable.
-     
-     This is a method that is unique to this protocol, and is used for internal management.
-
-     This is called after the Observable's `observer(_:, didSubscribe:)` method was called.
-     
-     In the default implementation, this is called in the unsubscription execution context, so that will be the thread used for the callback.
-
-     - parameter: The Observable we've unsubscribed from.
+     Default simply removes the observable from our list.
      */
     internal func internalUnsubscribedFrom(_ inObservableInstance: RVS_GeneralObservableProtocol) {
         for elem in subscriptions.enumerated() where elem.element.uuid == inObservableInstance.uuid {
@@ -435,9 +426,7 @@ extension RVS_GeneralObserverSubTrackerProtocol {
     
     /* ################################################################## */
     /**
-     This unsubs the observer from all of its subscriptions.
-     
-     - returns: An Array, of all the observables it unsubbed from.
+     Default unsubs us from all of our subscriptions.
      */
     @discardableResult
     public func unsubscribeAll() -> [RVS_GeneralObservableProtocol] {
