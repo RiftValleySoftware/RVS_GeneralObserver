@@ -6,6 +6,10 @@
 
 This is a general-purpose set of protocols that are designed to provide a simple infrastructure for a basic Observer implementation.
 
+[Here is the GitHub repo for the project.](https://github.com/RiftValleySoftware/RVS_GeneralObserver)
+
+[Here is the main documentation for the project.](https://riftvalleysoftware.github.io/RVS_GeneralObserver/)
+
 ### Does Not Handle Messaging
 
 This does not deal with messaging or managing communications between observers and observables. It simply gives them the infrastructure to track each other.
@@ -52,6 +56,10 @@ The URI for the repo is:
 
 - [git@github.com:RiftValleySoftware/RVS_GeneralObserver.git](git@github.com:RiftValleySoftware/RVS_GeneralObserver.git) (SSH), or
 - [https://github.com/RiftValleySoftware/RVS_GeneralObserver.git](https://github.com/RiftValleySoftware/RVS_GeneralObserver.git) (HTTPS).
+
+Once you have the package included in your project (if you want to find out more about SPM, then you might want to [view this series](https://littlegreenviper.com/series/spm/)), you'll need to include the library. It will be a static (build-time) library:
+
+    import RVS_GeneralObserver
 
 ### [Carthage](https://github.com/Carthage/Carthage):
 
