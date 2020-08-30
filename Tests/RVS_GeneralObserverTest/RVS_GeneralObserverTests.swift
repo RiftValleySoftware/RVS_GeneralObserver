@@ -245,6 +245,7 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
          
          - returns: An Array, of all the observables it unsubbed from.
          */
+        @discardableResult
         func unsubscribeAll() -> [RVS_GeneralObservableProtocol] {
             var ret = [RVS_GeneralObservableProtocol]()
             
@@ -263,6 +264,10 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
      This test has a matrix of subscribers and observables that we load and drain.
      
      This tests a particular use case (where we test a concrete implementation of a subscription tracker), as well as the tool, itself.
+     
+     What we will do here, is set up ten observables, then subscribe ten observers to each, so that each observer has ten observables, and each observables has ten subscribers.
+     
+     We will then unsub all on the first and last observable, so that each of the ten observers is now observing eight observables, but the middle observables still all have ten subscribers.
      */
     func testSubscriberTrackedObservablesAndObservers() {
         let numberOfObservers: Int = 10
@@ -293,20 +298,12 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
                 XCTAssertTrue(observable.amISubscribed(observer))
             }
         }
-
-        if let observer = observers.first {
-            let observersArray = observer.unsubscribeAll()
-            
-            XCTAssertEqual(numberOfObservers, observersArray.count)
-            
-            observersArray.forEach {
-                XCTAssertFalse($0.amISubscribed(observer))
-            }
-        } else {
-            XCTFail("Test Has A Bad Problem")
-        }
         
-        observables.last?.unsubscribeAll()
+        let unsubbedObservers = observables.last?.unsubscribeAll()
+        
+        for index in 0..<(observers.count - 1) {
+            XCTAssertEqual(unsubbedObservers?[index].uuid, observers[index].uuid)
+        }
         
         if let observable = observables.last {
             observers.forEach { observer in
@@ -317,11 +314,85 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
             XCTFail("Test Has A Bad Problem")
         }
         
-        observers.forEach { observer in
-            observer.subscriptions.forEach { observable in
+        observables.first?.unsubscribeAll()
+        
+        for index in 1..<(observers.count - 1) {
+            XCTAssertEqual(unsubbedObservers?[index].uuid, observers[index].uuid)
+        }
+
+        if let observable = observables.first {
+            observers.forEach { observer in
                 XCTAssertFalse(observer.amISubscribed(observable))
                 XCTAssertFalse(observable.amISubscribed(observer))
             }
+        } else {
+            XCTFail("Test Has A Bad Problem")
         }
+
+        // Make sure we didn't leave any dingleberries.
+        observers.forEach { observer in
+            if 0 < observer.subscriptions.count {
+                XCTAssertEqual((numberOfObservables - 2), observer.subscriptions.count)
+            }
+            observer.subscriptions.forEach { observable in
+                XCTAssertTrue(observer.amISubscribed(observable))
+                XCTAssertTrue(observable.amISubscribed(observer))
+            }
+        }
+        
+        var nonSubscribedCount = 0
+        
+        observables.forEach { observable in
+            if 0 < observable.observers.count {
+                XCTAssertEqual(numberOfObservers, observable.observers.count)
+            } else {
+                nonSubscribedCount += 1
+            }
+            observable.observers.forEach { observer in
+                XCTAssertTrue(observer.amISubscribed(observable))
+                XCTAssertTrue(observable.amISubscribed(observer))
+            }
+        }
+        
+        XCTAssertEqual(2, nonSubscribedCount)
+        
+        XCTAssertEqual(0, observables.first?.observers.count)
+        XCTAssertEqual(0, observables.last?.observers.count)
+    }
+    
+    /* ################################################################## */
+    /**
+     This will be the same as the `testSubscriberTrackedObservablesAndObservers()` method, but this time, we will work with the observers.
+     */
+    func testSubscriberTrackedObservablesAndObserversPartDeux() {
+        let numberOfObservers: Int = 10
+        let numberOfObservables: Int = 10
+        
+        var observables: [BaseObservable] = []
+        var observers: [SubTrackerObserver] = []
+        
+        for _ in 0..<numberOfObservers {
+            observers.append(SubTrackerObserver())
+        }
+
+        for _ in 0..<numberOfObservables {
+            observables.append(BaseObservable())
+            observers.forEach { observables.last?.subscribe($0) }
+        }
+        
+        let unsubbedObservables = observers.first?.unsubscribeAll()
+        
+        for index in 0..<(observables.count - 1) {
+            XCTAssertEqual(observables[index], unsubbedObservables?[index] as? BaseObservable)
+        }
+
+        observers.last?.unsubscribeAll()
+        
+        for index in 1..<(observables.count - 1) {
+            XCTAssertEqual(observables[index], unsubbedObservables?[index] as? BaseObservable)
+        }
+        
+        XCTAssertEqual(0, observers.first?.subscriptions.count)
+        XCTAssertEqual(0, observers.last?.subscriptions.count)
     }
 }

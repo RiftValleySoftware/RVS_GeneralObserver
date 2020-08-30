@@ -282,6 +282,7 @@ extension RVS_GeneralObserverProtocol {
     /**
      Default simply unsubscribes itself, using the Observable's method.
      */
+    @discardableResult
     public func unsubscribeFrom(_ inObservable: RVS_GeneralObservableProtocol) -> Bool { nil != inObservable.unsubscribe(self) }
 
     /* ################################################################## */
