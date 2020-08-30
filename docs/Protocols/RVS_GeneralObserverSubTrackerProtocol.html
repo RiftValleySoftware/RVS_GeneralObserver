@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Array Extension Reference</title>
+    <title>RVS_GeneralObserverSubTrackerProtocol Protocol Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,8 +13,8 @@
     <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Extension/Array" class="dashAnchor"></a>
-    <a title="Array Extension Reference"></a>
+    <a name="//apple_ref/swift/Protocol/RVS_GeneralObserverSubTrackerProtocol" class="dashAnchor"></a>
+    <a title="RVS_GeneralObserverSubTrackerProtocol Protocol Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html">RVS_BTDriver Public API Doumentation</a> (100% documented)</p>
@@ -30,7 +30,7 @@
       <p id="breadcrumbs">
         <a href="../index.html"> Reference</a>
         <img id="carat" src="../img/carat.png" />
-        Array Extension Reference
+        RVS_GeneralObserverSubTrackerProtocol Protocol Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -63,38 +63,26 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>Array</h1>
+            <h1>RVS_GeneralObserverSubTrackerProtocol</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">extension</span> <span class="kt">Array</span> <span class="k">where</span> <span class="kt">Element</span><span class="p">:</span> <span class="kt"><a href="../Protocols/RVS_GeneralObserverProtocol.html">RVS_GeneralObserverProtocol</a></span></code></pre>
-<pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">extension</span> <span class="kt">Array</span> <span class="k">where</span> <span class="kt">Element</span><span class="p">:</span> <span class="kt"><a href="../Protocols/RVS_GeneralObservableProtocol.html">RVS_GeneralObservableProtocol</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">RVS_GeneralObserverSubTrackerProtocol</span> <span class="p">:</span> <span class="kt">AnyObject</span><span class="p">,</span> <span class="kt"><a href="../Protocols/RVS_GeneralObserverProtocol.html">RVS_GeneralObserverProtocol</a></span></code></pre>
 
                 </div>
               </div>
-            <p>This allows us to extract elements from an Array in a fashion similar to a Dictionary.</p>
-
-<p>It isn&rsquo;t particularly efficient, but we&rsquo;re not talking huge Arrays, here.</p>
+            <p>This is a class protocol, so we can mutate the properties in the protocol extension, and we won&rsquo;t have the issue of unlinked references.</p>
 
           </section>
           <section class="section task-group-section">
             <div class="task-group">
-              <div class="task-name-container">
-                <a name="/Available%20where%20%60Element%60%3A%20%60RVS_GeneralObserverProtocol%60"></a>
-                <a name="//apple_ref/swift/Section/Available where `Element`: `RVS_GeneralObserverProtocol`" class="dashAnchor"></a>
-                <div class="section-name-container">
-                  <a class="section-name-link" href="#/Available%20where%20%60Element%60%3A%20%60RVS_GeneralObserverProtocol%60"></a>
-                  <h3 class="section-name"><p>Available where <code>Element</code>: <code><a href="../Protocols/RVS_GeneralObserverProtocol.html">RVS_GeneralObserverProtocol</a></code></p>
-</h3>
-                </div>
-              </div>
               <ul>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:Sa19RVS_GeneralObserverAA0a1_bC8ProtocolRzlEyxSgSScip"></a>
-                    <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:Sa19RVS_GeneralObserverAA0a1_bC8ProtocolRzlEyxSgSScip">subscript(_:<wbr>)</a>
+                    <a name="/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP13subscriptionsSayAA0a1_b10ObservableF0_pGvp"></a>
+                    <a name="//apple_ref/swift/Property/subscriptions" class="dashAnchor"></a>
+                    <a class="token" href="#/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP13subscriptionsSayAA0a1_b10ObservableF0_pGvp">subscriptions</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -102,20 +90,16 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This allows us to treat an Array like a Dictionary.</p>
+                        <p>This is where we will track our subscriptions.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">subscript</span><span class="p">(</span><span class="nv">inUUIDString</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Element</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">subscriptions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/RVS_GeneralObservableProtocol.html">RVS_GeneralObservableProtocol</a></span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>Either the element, or nil.</p>
                       </div>
                     </section>
                   </div>
@@ -123,30 +107,39 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:Sa19RVS_GeneralObserverAA0a1_bC8ProtocolRzlEyxSg10Foundation4UUIDVcip"></a>
-                    <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:Sa19RVS_GeneralObserverAA0a1_bC8ProtocolRzlEyxSg10Foundation4UUIDVcip">subscript(_:<wbr>)</a>
+                    <a name="/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP14unsubscribeAllSayAA0a1_b10ObservableF0_pGyF"></a>
+                    <a name="//apple_ref/swift/Method/unsubscribeAll()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP14unsubscribeAllSayAA0a1_b10ObservableF0_pGyF">unsubscribeAll()</a>
                     </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
                   </div>
                   <div class="height-container">
                     <div class="pointer-container"></div>
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This allows us to treat an Array like a Dictionary.</p>
+                        <p>This unsubs the observer from all of its subscriptions.</p>
+
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p>Default unsubs us from all of our subscriptions.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">subscript</span><span class="p">(</span><span class="nv">inUUID</span><span class="p">:</span> <span class="kt">UUID</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Element</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+<span class="kd">func</span> <span class="nf">unsubscribeAll</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Protocols/RVS_GeneralObservableProtocol.html">RVS_GeneralObservableProtocol</a></span><span class="p">]</span></code></pre>
 
                         </div>
                       </div>
                       <div>
                         <h4>Return Value</h4>
-                        <p>Either the element, or nil.</p>
+                        <p>An Array, of all the observables it unsubbed from.</p>
                       </div>
                     </section>
                   </div>
@@ -155,11 +148,11 @@
             </div>
             <div class="task-group">
               <div class="task-name-container">
-                <a name="/Available%20where%20%60Element%60%3A%20%60RVS_GeneralObservableProtocol%60"></a>
-                <a name="//apple_ref/swift/Section/Available where `Element`: `RVS_GeneralObservableProtocol`" class="dashAnchor"></a>
+                <a name="/INTERNAL-USE%20ONLY"></a>
+                <a name="//apple_ref/swift/Section/INTERNAL-USE ONLY" class="dashAnchor"></a>
                 <div class="section-name-container">
-                  <a class="section-name-link" href="#/Available%20where%20%60Element%60%3A%20%60RVS_GeneralObservableProtocol%60"></a>
-                  <h3 class="section-name"><p>Available where <code>Element</code>: <code><a href="../Protocols/RVS_GeneralObservableProtocol.html">RVS_GeneralObservableProtocol</a></code></p>
+                  <a class="section-name-link" href="#/INTERNAL-USE%20ONLY"></a>
+                  <h3 class="section-name"><p>INTERNAL-USE ONLY</p>
 </h3>
                 </div>
               </div>
@@ -167,9 +160,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:Sa19RVS_GeneralObserverAA0a1_B18ObservableProtocolRzlEyxSgSScip"></a>
-                    <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:Sa19RVS_GeneralObserverAA0a1_B18ObservableProtocolRzlEyxSgSScip">subscript(_:<wbr>)</a>
+                    <a name="/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP20internalSubscribedToyyAA0a1_b10ObservableF0_pF"></a>
+                    <a name="//apple_ref/swift/Method/internalSubscribedTo(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP20internalSubscribedToyyAA0a1_b10ObservableF0_pF">internalSubscribedTo(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -177,20 +170,22 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This allows us to treat an Array like a Dictionary.</p>
+                        <p>This is called after being subscribed to an Observable.</p>
+
+<p>This is a method that is unique to this protocol, and is used for internal management.</p>
+
+<p>This is called after the Observable&rsquo;s <code>observer(_:, didSubscribe:)</code> method was called.</p>
+
+<p>In the default implementation, this is called in the subscription execution context, so that will be the thread used for the callback.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">subscript</span><span class="p">(</span><span class="nv">inUUIDString</span><span class="p">:</span> <span class="kt">String</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Element</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">internalSubscribedTo</span><span class="p">(</span><span class="n">_</span> <span class="nv">inObservableInstance</span><span class="p">:</span> <span class="kt"><a href="../Protocols/RVS_GeneralObservableProtocol.html">RVS_GeneralObservableProtocol</a></span><span class="p">)</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>Either the element, or nil.</p>
                       </div>
                     </section>
                   </div>
@@ -198,9 +193,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:Sa19RVS_GeneralObserverAA0a1_B18ObservableProtocolRzlEyxSg10Foundation4UUIDVcip"></a>
-                    <a name="//apple_ref/swift/Method/subscript(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:Sa19RVS_GeneralObserverAA0a1_B18ObservableProtocolRzlEyxSg10Foundation4UUIDVcip">subscript(_:<wbr>)</a>
+                    <a name="/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP24internalUnsubscribedFromyyAA0a1_b10ObservableF0_pF"></a>
+                    <a name="//apple_ref/swift/Method/internalUnsubscribedFrom(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP24internalUnsubscribedFromyyAA0a1_b10ObservableF0_pF">internalUnsubscribedFrom(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -208,20 +203,22 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>This allows us to treat an Array like a Dictionary.</p>
+                        <p>This is called after being unsubscribed from an Observable.</p>
+
+<p>This is a method that is unique to this protocol, and is used for internal management.</p>
+
+<p>This is called after the Observable&rsquo;s <code>observer(_:, didSubscribe:)</code> method was called.</p>
+
+<p>In the default implementation, this is called in the unsubscription execution context, so that will be the thread used for the callback.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="nf">subscript</span><span class="p">(</span><span class="nv">inUUID</span><span class="p">:</span> <span class="kt">UUID</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kt">Element</span><span class="p">?</span> <span class="p">{</span> <span class="k">get</span> <span class="p">}</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">internalUnsubscribedFrom</span><span class="p">(</span><span class="n">_</span> <span class="nv">inObservableInstance</span><span class="p">:</span> <span class="kt"><a href="../Protocols/RVS_GeneralObservableProtocol.html">RVS_GeneralObservableProtocol</a></span><span class="p">)</span></code></pre>
 
                         </div>
-                      </div>
-                      <div>
-                        <h4>Return Value</h4>
-                        <p>Either the element, or nil.</p>
                       </div>
                     </section>
                   </div>

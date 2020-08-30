@@ -16,7 +16,7 @@ It is up to implementations to handle what to do with this information.
 
 ### Protocol-Based
 
-This is based on protocols, as opposed to classes or structs. A couple of the protocols require that they be implemented as classes. There is heavy reliance of protocol default implementations to deliver the infrastructure.
+This is based on protocols, as opposed to classes or structs. A couple of the protocols require that they be implemented as classes. There is heavy reliance on protocol default implementations to deliver the infrastructure.
 
 ## WHAT PROBLEM DOES THIS SOLVE?
 
@@ -41,3 +41,113 @@ Observers (at least, they way I do them) have a different aspect:
 ### Benefits
 
 Managing the subscription lists and relationships is a very fundamental part of Observer, and something that needs to be rock-solid. That was why this tool was developed.
+
+We shouldn't even be thinking about this.
+
+## IMPLEMENTATION
+
+### [Swift Package Manager (SPM)](https://swift.org/package-manager/):
+
+The URI for the repo is:
+
+- [git@github.com:RiftValleySoftware/RVS_GeneralObserver.git](git@github.com:RiftValleySoftware/RVS_GeneralObserver.git) (SSH), or
+- [https://github.com/RiftValleySoftware/RVS_GeneralObserver.git](https://github.com/RiftValleySoftware/RVS_GeneralObserver.git) (HTTPS).
+
+### [Carthage](https://github.com/Carthage/Carthage):
+
+You can include the library by adding the following line to your [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile):
+
+    github "RiftValleySoftware/RVS_GeneralObserver"
+    
+You should probably just include the `Carthage/Checkouts/RVS_GeneralObserver/Sources/RVS_GeneralObserver/RVS_GeneralObserver_Protocols.swift` file directly, as opposed to building a library.
+
+### Observables
+
+Once that is done, you can make a class (it needs to be a class) Observable, by conforming to the [`RVS_GeneralObservableProtocol`](https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/5978359d3521f125b565e63767328ceec911a170/Sources/RVS_GeneralObserver/RVS_GeneralObserver_Protocols.swift#L96) protocol.
+
+You will need to create two stored properties in your implementation (the following examples are from [the unit tests](https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/5978359d3521f125b565e63767328ceec911a170/Tests/RVS_GeneralObserverTest/RVS_GeneralObserverTests.swift#L39)):
+
+    class BaseObservable: RVS_GeneralObservableProtocol {
+        /* ############################################################## */
+        /**
+        The required UUID. It is set up with an initializer, and left alone.
+        */
+        let uuid = UUID()
+        
+        /* ############################################################## */
+        /**
+        This is the required observers Array.
+        */
+        var observers: [RVS_GeneralObserverProtocol] = []
+
+The `uuid` property is a "set and forget" property. Simply do exactly as above, and never worry about it afterwards.
+
+The `observers` Array is also one you're unlikely to use, but it is where subscribers are tracked.
+
+### Observers
+
+We have two types of Observers. One is a "generic" one, that can be applied to `struct`s and `class`es, that does not track the Observables to which an Observer is subscribed, and the other is a `class`-only variant that tracks an Observer's subscriptions:
+
+These examples are also from the [unit tests](https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/master/Tests/RVS_GeneralObserverTest/RVS_GeneralObserverTests.swift):
+
+[Standard (`struct` or `class`) Observer](https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/5978359d3521f125b565e63767328ceec911a170/Tests/RVS_GeneralObserverTest/RVS_GeneralObserverTests.swift#L90):
+
+    struct BaseObserver: RVS_GeneralObserverProtocol {
+        /* ############################################################## */
+        /**
+         The required UUID. It is set up with an initializer, and left alone.
+         */
+        let uuid = UUID()
+
+[`class`-only Subscription-Tracking Observer](https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/5978359d3521f125b565e63767328ceec911a170/Tests/RVS_GeneralObserverTest/RVS_GeneralObserverTests.swift#L189):
+
+    class SubTrackerObserver: RVS_GeneralObserverSubTrackerProtocol {
+        /* ############################################################## */
+        /**
+         The required UUID. It is set up with an initializer, and left alone.
+         */
+        let uuid = UUID()
+        
+        /* ############################################################## */
+        /**
+         This is where we will track our subscriptions.
+         */
+        var subscriptions: [RVS_GeneralObservableProtocol] = []
+
+Because the protocol default works with an Array of references, this should be a `class`.
+
+Subscribing to an Observable is as simple as calling its [`subscribe()`](https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/5978359d3521f125b565e63767328ceec911a170/Sources/RVS_GeneralObserver/RVS_GeneralObserver_Protocols.swift#L134) method, with the observer, supplied:
+
+    let subscribedObserver = observableInstance.subscribe(observerInstance)
+
+The response is the `observerInstance`, if the subscription was successful. This allows the method to be chained. It may be nil, if the observer is already subscribed.
+
+Unsubscribing is exactly the same, except that we call the [`unsubscribe()`](https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/5978359d3521f125b565e63767328ceec911a170/Sources/RVS_GeneralObserver/RVS_GeneralObserver_Protocols.swift#L145) method, this time.
+
+    let unsubscribedObserver = observableInstance.unsubscribe(observerInstance)
+
+There are also `unsubscribeAll()` methods for [the Observable](https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/5978359d3521f125b565e63767328ceec911a170/Sources/RVS_GeneralObserver/RVS_GeneralObserver_Protocols.swift#L154), and for [the subscription-tracking Observer](https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/5978359d3521f125b565e63767328ceec911a170/Sources/RVS_GeneralObserver/RVS_GeneralObserver_Protocols.swift#L401).
+
+Calling these will remove every Observer from an Observable instance, or every Observable from an Observer instance.
+
+### Callbacks
+
+There aren't any required callbacks in the protocols, but there are a few, very basic optional ones.
+
+The Observer protocol has callbacks that are made at the time that a subscription is confirmed:
+
+    func subscribedTo(_ observable: RVS_GeneralObservableProtocol)
+
+and when an unsubscription is confirmed:
+
+    func unsubscribedFrom(_ observable: RVS_GeneralObservableProtocol)
+
+The subscription-tracking protocol has [a couple of internal methods](https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/5978359d3521f125b565e63767328ceec911a170/Sources/RVS_GeneralObserver/RVS_GeneralObserver_Protocols.swift#L366) that aren't supposed to be used by conformant instances.
+
+The Observable protocol has a single optional callback:
+
+    func observer(_ observer: RVS_GeneralObserverProtocol, didSubscribe: Bool)
+
+This is called whenever an Observer subscribes or unsubscribes (the second argument indicates that).
+
+All classes have an `amISubscribed()` Boolean method, where you pass in an Observer (or Observable) instance to be tested to see if an Observer is subscribed to an Observable.

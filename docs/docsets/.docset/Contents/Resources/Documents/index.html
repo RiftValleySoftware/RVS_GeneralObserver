@@ -52,6 +52,9 @@
               <li class="nav-group-task">
                 <a href="Protocols/RVS_GeneralObserverProtocol.html">RVS_GeneralObserverProtocol</a>
               </li>
+              <li class="nav-group-task">
+                <a href="Protocols/RVS_GeneralObserverSubTrackerProtocol.html">RVS_GeneralObserverSubTrackerProtocol</a>
+              </li>
             </ul>
           </li>
         </ul>
@@ -60,13 +63,157 @@
         <section>
           <section class="section">
             
-            <p><img src="img/icon.png" alt="Icon"></p>
+            <p><img src="icon.png" alt="Icon"></p>
 <h1 id='rvs_generalobserver' class='heading'>RVS_GeneralObserver</h1>
+<h2 id='description' class='heading'>DESCRIPTION</h2>
+
+<p>This is a general-purpose set of protocols that are designed to provide a simple infrastructure for a basic Observer implementation.</p>
+<h3 id='does-not-handle-messaging' class='heading'>Does Not Handle Messaging</h3>
+
+<p>This does not deal with messaging or managing communications between observers and observables. It simply gives them the infrastructure to track each other.</p>
+
+<p>There are a few callbacks, explicitly related to aggregate management, but, otherwise, it&rsquo;s simply a tool to provide a reliable relationship graph management.</p>
+
+<p>It is up to implementations to handle what to do with this information.</p>
+<h3 id='protocol-based' class='heading'>Protocol-Based</h3>
+
+<p>This is based on protocols, as opposed to classes or structs. A couple of the protocols require that they be implemented as classes. There is heavy reliance on protocol default implementations to deliver the infrastructure.</p>
+<h2 id='what-problem-does-this-solve' class='heading'>WHAT PROBLEM DOES THIS SOLVE?</h2>
+
+<p>At its heart, any observer implementation is really just a relationship graph. Observers <em>subscribe</em> to Observables. Observables use the subscription as a one-way broadcast medium.</p>
+
+<p>Managing the subscriptions and relationships is absolutely fundamental to the pattern. If we can&rsquo;t trust our subscription list, then everything built upon it is at risk.</p>
+<h3 id='different-from-delegate' class='heading'>Different From Delegate</h3>
+
+<p>Apple uses the <a href="https://developer.apple.com/library/archive/documentation/General/Conceptual/CocoaEncyclopedia/DelegatesandDataSources/DelegatesandDataSources.html">Delegate</a> pattern in a lot of their Cocoa infrastucture. This is an excellent and simple pattern that has the following features:</p>
+
+<ul>
+<li>Delegates are a &ldquo;one-to-one&rdquo; relationship. A class that has a delegate has only one delegate.</li>
+<li>Delegates are often &ldquo;two-way&rdquo; relationships. Delegates can send information back to the objects to which they are subscribed. In fact, <a href="https://developer.apple.com/library/archive/documentation/General/Conceptual/CocoaEncyclopedia/DelegatesandDataSources/DelegatesandDataSources.html#//apple_ref/doc/uid/TP40010810-CH11-SW6">the Data Source pattern</a> codifies this explicitly.</li>
+<li>Delegates require that all involved entities be classes. In fact, delegates need to derive from <a href="https://developer.apple.com/documentation/objectivec/nsobject">NSObject</a>.</li>
+</ul>
+
+<p>Observers (at least, they way I do them) have a different aspect:</p>
+
+<ul>
+<li>They are usually a &ldquo;one-to-many&rdquo; relationship. Observers <em>subscribe</em> to observables, who are responsible for managing a list of subscribers.</li>
+<li>They are a &ldquo;one-way&rdquo; relationship. Observables can only send messages to subscribers. They cannot receive anything. If an observable wants to get messages from a subscriber, then the subscriber needs to become an observable, and the old observable needs to subscribe to them.</li>
+<li>It isn&rsquo;t a requirement for observers and observables to be classes, to satisfy the pattern, but I do require that a couple of the protocols be class-based protocols, in order to implement some of the defaults.</li>
+</ul>
+<h3 id='benefits' class='heading'>Benefits</h3>
+
+<p>Managing the subscription lists and relationships is a very fundamental part of Observer, and something that needs to be rock-solid. That was why this tool was developed.</p>
+
+<p>We shouldn&rsquo;t even be thinking about this.</p>
+<h2 id='implementation' class='heading'>IMPLEMENTATION</h2>
+<h3 id='a-href-https-swift-org-package-manager-swift-package-manager-spm-a' class='heading'><a href="https://swift.org/package-manager/">Swift Package Manager (SPM)</a>:</h3>
+
+<p>The URI for the repo is:</p>
+
+<ul>
+<li><a href="git@github.com:RiftValleySoftware/RVS_GeneralObserver.git">git@github.com:RiftValleySoftware/RVS_GeneralObserver.git</a> (SSH), or</li>
+<li><a href="https://github.com/RiftValleySoftware/RVS_GeneralObserver.git">https://github.com/RiftValleySoftware/RVS_GeneralObserver.git</a> (HTTPS).</li>
+</ul>
+<h3 id='a-href-https-github-com-carthage-carthage-carthage-a' class='heading'><a href="https://github.com/Carthage/Carthage">Carthage</a>:</h3>
+
+<p>You can include the library by adding the following line to your <a href="https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile">Cartfile</a>:</p>
+<pre class="highlight plaintext"><code>github "RiftValleySoftware/RVS_GeneralObserver"
+</code></pre>
+
+<p>You should probably just include the <code>Carthage/Checkouts/RVS_GeneralObserver/Sources/RVS_GeneralObserver/RVS_GeneralObserver_Protocols.swift</code> file directly, as opposed to building a library.</p>
+<h3 id='observables' class='heading'>Observables</h3>
+
+<p>Once that is done, you can make a class (it needs to be a class) Observable, by conforming to the <a href="https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/5978359d3521f125b565e63767328ceec911a170/Sources/RVS_GeneralObserver/RVS_GeneralObserver_Protocols.swift#L96"><code><a href="Protocols/RVS_GeneralObservableProtocol.html">RVS_GeneralObservableProtocol</a></code></a> protocol.</p>
+
+<p>You will need to create two stored properties in your implementation (the following examples are from <a href="https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/5978359d3521f125b565e63767328ceec911a170/Tests/RVS_GeneralObserverTest/RVS_GeneralObserverTests.swift#L39">the unit tests</a>):</p>
+<pre class="highlight plaintext"><code>class BaseObservable: RVS_GeneralObservableProtocol {
+    /* ############################################################## */
+    /**
+    The required UUID. It is set up with an initializer, and left alone.
+    */
+    let uuid = UUID()
+
+    /* ############################################################## */
+    /**
+    This is the required observers Array.
+    */
+    var observers: [RVS_GeneralObserverProtocol] = []
+</code></pre>
+
+<p>The <code>uuid</code> property is a &ldquo;set and forget&rdquo; property. Simply do exactly as above, and never worry about it afterwards.</p>
+
+<p>The <code>observers</code> Array is also one you&rsquo;re unlikely to use, but it is where subscribers are tracked.</p>
+<h3 id='observers' class='heading'>Observers</h3>
+
+<p>We have two types of Observers. One is a &ldquo;generic&rdquo; one, that can be applied to <code>struct</code>s and <code>class</code>es, that does not track the Observables to which an Observer is subscribed, and the other is a <code>class</code>-only variant that tracks an Observer&rsquo;s subscriptions:</p>
+
+<p>These examples are also from the <a href="https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/master/Tests/RVS_GeneralObserverTest/RVS_GeneralObserverTests.swift">unit tests</a>:</p>
+
+<p><a href="https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/5978359d3521f125b565e63767328ceec911a170/Tests/RVS_GeneralObserverTest/RVS_GeneralObserverTests.swift#L90">Standard (<code>struct</code> or <code>class</code>) Observer</a>:</p>
+<pre class="highlight plaintext"><code>struct BaseObserver: RVS_GeneralObserverProtocol {
+    /* ############################################################## */
+    /**
+     The required UUID. It is set up with an initializer, and left alone.
+     */
+    let uuid = UUID()
+</code></pre>
+
+<p><a href="https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/5978359d3521f125b565e63767328ceec911a170/Tests/RVS_GeneralObserverTest/RVS_GeneralObserverTests.swift#L189"><code>class</code>-only Subscription-Tracking Observer</a>:</p>
+<pre class="highlight plaintext"><code>class SubTrackerObserver: RVS_GeneralObserverSubTrackerProtocol {
+    /* ############################################################## */
+    /**
+     The required UUID. It is set up with an initializer, and left alone.
+     */
+    let uuid = UUID()
+
+    /* ############################################################## */
+    /**
+     This is where we will track our subscriptions.
+     */
+    var subscriptions: [RVS_GeneralObservableProtocol] = []
+</code></pre>
+
+<p>Because the protocol default works with an Array of references, this should be a <code>class</code>.</p>
+
+<p>Subscribing to an Observable is as simple as calling its <a href="https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/5978359d3521f125b565e63767328ceec911a170/Sources/RVS_GeneralObserver/RVS_GeneralObserver_Protocols.swift#L134"><code>subscribe()</code></a> method, with the observer, supplied:</p>
+<pre class="highlight plaintext"><code>let subscribedObserver = observableInstance.subscribe(observerInstance)
+</code></pre>
+
+<p>The response is the <code>observerInstance</code>, if the subscription was successful. This allows the method to be chained. It may be nil, if the observer is already subscribed.</p>
+
+<p>Unsubscribing is exactly the same, except that we call the <a href="https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/5978359d3521f125b565e63767328ceec911a170/Sources/RVS_GeneralObserver/RVS_GeneralObserver_Protocols.swift#L145"><code>unsubscribe()</code></a> method, this time.</p>
+<pre class="highlight plaintext"><code>let unsubscribedObserver = observableInstance.unsubscribe(observerInstance)
+</code></pre>
+
+<p>There are also <code>unsubscribeAll()</code> methods for <a href="https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/5978359d3521f125b565e63767328ceec911a170/Sources/RVS_GeneralObserver/RVS_GeneralObserver_Protocols.swift#L154">the Observable</a>, and for <a href="https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/5978359d3521f125b565e63767328ceec911a170/Sources/RVS_GeneralObserver/RVS_GeneralObserver_Protocols.swift#L401">the subscription-tracking Observer</a>.</p>
+
+<p>Calling these will remove every Observer from an Observable instance, or every Observable from an Observer instance.</p>
+<h3 id='callbacks' class='heading'>Callbacks</h3>
+
+<p>There aren&rsquo;t any required callbacks in the protocols, but there are a few, very basic optional ones.</p>
+
+<p>The Observer protocol has callbacks that are made at the time that a subscription is confirmed:</p>
+<pre class="highlight plaintext"><code>func subscribedTo(_ observable: RVS_GeneralObservableProtocol)
+</code></pre>
+
+<p>and when an unsubscription is confirmed:</p>
+<pre class="highlight plaintext"><code>func unsubscribedFrom(_ observable: RVS_GeneralObservableProtocol)
+</code></pre>
+
+<p>The subscription-tracking protocol has <a href="https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/5978359d3521f125b565e63767328ceec911a170/Sources/RVS_GeneralObserver/RVS_GeneralObserver_Protocols.swift#L366">a couple of internal methods</a> that aren&rsquo;t supposed to be used by conformant instances.</p>
+
+<p>The Observable protocol has a single optional callback:</p>
+<pre class="highlight plaintext"><code>func observer(_ observer: RVS_GeneralObserverProtocol, didSubscribe: Bool)
+</code></pre>
+
+<p>This is called whenever an Observer subscribes or unsubscribes (the second argument indicates that).</p>
+
+<p>All classes have an <code>amISubscribed()</code> Boolean method, where you pass in an Observer (or Observable) instance to be tested to see if an Observer is subscribed to an Observable.</p>
 
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-08-29)</p>
+          <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-08-30)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
       </article>

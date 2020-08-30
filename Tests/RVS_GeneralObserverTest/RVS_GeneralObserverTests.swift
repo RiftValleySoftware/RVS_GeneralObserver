@@ -363,4 +363,45 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
         XCTAssertEqual(0, observers.first?.subscriptions.count)
         XCTAssertEqual(0, observers.last?.subscriptions.count)
     }
+    
+    /* ################################################################## */
+    /**
+     This runs some basic tests on our "treat an Array like a Dictionary" extensions.
+     */
+    func testArrayExtensions() {
+        let numberOfObservers: Int = 10
+        let numberOfObservables: Int = 10
+        
+        var observables: [BaseObservable] = []
+        var observers: [SubTrackerObserver] = []
+        
+        for _ in 0..<numberOfObservers {
+            observers.append(SubTrackerObserver())
+        }
+
+        for _ in 0..<numberOfObservables {
+            observables.append(BaseObservable())
+            observers.forEach { observables.last?.subscribe($0) }
+        }
+        
+        let randomIndex = Int.random(in: 0..<numberOfObservables)
+        
+        let randomObservable = observables[randomIndex]
+        let randomObservableUUID = randomObservable.uuid
+        let randomObservableUUIDString = randomObservableUUID.uuidString
+        
+        if let observableFromUUID = observables[randomObservableUUID] {
+            XCTAssertEqual(randomObservableUUID, observableFromUUID.uuid)
+            XCTAssertEqual(randomObservableUUIDString, observableFromUUID.uuid.uuidString)
+        }
+        
+        let randomObserver = observers[randomIndex]
+        let randomObserverUUID = randomObserver.uuid
+        let randomObserverUUIDString = randomObserverUUID.uuidString
+        
+        if let observableFromUUID = observables[randomObserverUUID] {
+            XCTAssertEqual(randomObserverUUID, observableFromUUID.uuid)
+            XCTAssertEqual(randomObserverUUIDString, observableFromUUID.uuid.uuidString)
+        }
+    }
 }

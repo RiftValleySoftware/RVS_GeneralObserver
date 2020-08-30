@@ -362,7 +362,19 @@ public protocol RVS_GeneralObserverSubTrackerProtocol: class, RVS_GeneralObserve
      This is where we will track our subscriptions.
      */
     var subscriptions: [RVS_GeneralObservableProtocol] { get set }
+    
+    /* ################################################################## */
+    /**
+     This unsubs the observer from all of its subscriptions.
+     
+     - returns: An Array, of all the observables it unsubbed from.
+     */
+    @discardableResult
+    func unsubscribeAll() -> [RVS_GeneralObservableProtocol]
 
+    /* ############################################################################################################################## */
+    // MARK: - INTERNAL-USE ONLY -
+    /* ############################################################################################################################## */
     /* ################################################################## */
     /**
      This is called after being subscribed to an Observable.
@@ -390,15 +402,6 @@ public protocol RVS_GeneralObserverSubTrackerProtocol: class, RVS_GeneralObserve
      - parameter: The Observable we've unsubscribed from.
      */
     func internalUnsubscribedFrom(_ inObservableInstance: RVS_GeneralObservableProtocol)
-    
-    /* ################################################################## */
-    /**
-     This unsubs the observer from all of its subscriptions.
-     
-     - returns: An Array, of all the observables it unsubbed from.
-     */
-    @discardableResult
-    func unsubscribeAll() -> [RVS_GeneralObservableProtocol]
 }
 
 /* ################################################################################################################################## */
@@ -409,7 +412,7 @@ extension RVS_GeneralObserverSubTrackerProtocol {
     /**
      Default simply adds the observable to our list.
      */
-    internal func internalSubscribedTo(_ inObservableInstance: RVS_GeneralObservableProtocol) {
+    func internalSubscribedTo(_ inObservableInstance: RVS_GeneralObservableProtocol) {
         subscriptions.append(inObservableInstance)
     }
     
@@ -417,7 +420,7 @@ extension RVS_GeneralObserverSubTrackerProtocol {
     /**
      Default simply removes the observable from our list.
      */
-    internal func internalUnsubscribedFrom(_ inObservableInstance: RVS_GeneralObservableProtocol) {
+    func internalUnsubscribedFrom(_ inObservableInstance: RVS_GeneralObservableProtocol) {
         for elem in subscriptions.enumerated() where elem.element.uuid == inObservableInstance.uuid {
             subscriptions.remove(at: elem.offset)
             break
