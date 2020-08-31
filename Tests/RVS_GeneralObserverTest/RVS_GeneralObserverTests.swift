@@ -186,6 +186,13 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
         wait(for: [basicTestExpectationUnsubscribe], timeout: 0.1)
     }
 
+    
+    /* ################################################################################################################################## */
+    // MARK: - Specialized Subscription-Tracking Observer (As A Class) -
+    /* ################################################################################################################################## */
+    /**
+     This simply declares a UUID.
+     */
     class SubTrackerObserver: RVS_GeneralObserverSubTrackerProtocol {
         /* ############################################################## */
         /**
@@ -195,7 +202,7 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
         
         /* ############################################################## */
         /**
-         This is where we will track our subscriptions.
+         This is where we will track our subscriptions. It is required.
          */
         var subscriptions: [RVS_GeneralObservableProtocol] = []
     }

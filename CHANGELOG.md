@@ -2,6 +2,6 @@
 
 ## 1.0.0.0000
 
-- **August 30, 2020**
+- **August 31, 2020**
 
 Initial release.
