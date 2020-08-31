@@ -69,11 +69,19 @@ You can include the library by adding the following line to your [Cartfile](http
     
 You should probably just include the `Carthage/Checkouts/RVS_GeneralObserver/Sources/RVS_GeneralObserver/RVS_GeneralObserver_Protocols.swift` file directly, as opposed to building a library.
 
+### [Git Submodule](https://git-scm.com/book/en/v2/Git-Tools-Submodules) or Direct File Download
+
+If you want to include the project as a submodule, simply use one of the URIs above (in the Swift Package Manager section). It's probably best to include [the `Sources/RVS_GeneralObserver/RVS_GeneralObserver_Protocols.swift` file](https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/master/Sources/RVS_GeneralObserver/RVS_GeneralObserver_Protocols.swift) directly from the submodule (with no module import).
+
+If you want to simply download and include the file, then there is only one file to deal with. [The `Sources/RVS_GeneralObserver/RVS_GeneralObserver_Protocols.swift` file.](https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/master/Sources/RVS_GeneralObserver/RVS_GeneralObserver_Protocols.swift)
+
+Just download and include that one file. No need to import a module.
+
 ### Observables
 
 Once that is done, you can make a class (it needs to be a class) Observable, by conforming to the [`RVS_GeneralObservableProtocol`](https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/5978359d3521f125b565e63767328ceec911a170/Sources/RVS_GeneralObserver/RVS_GeneralObserver_Protocols.swift#L96) protocol.
 
-You will need to create two stored properties in your implementation (the following examples are from [the unit tests](https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/5978359d3521f125b565e63767328ceec911a170/Tests/RVS_GeneralObserverTest/RVS_GeneralObserverTests.swift#L39)):
+You will need to create two stored properties in your implementation (the following examples are from [the unit tests](https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/81f9021fe228f434df4fb17139620a57c7851412/Tests/RVS_GeneralObserverTest/RVS_GeneralObserverTests.swift#L39)):
 
     class BaseObservable: RVS_GeneralObservableProtocol {
         /* ############################################################## */
@@ -98,7 +106,7 @@ We have two types of Observers. One is a "generic" one, that can be applied to `
 
 These examples are also from the [unit tests](https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/master/Tests/RVS_GeneralObserverTest/RVS_GeneralObserverTests.swift):
 
-[Standard (`struct` or `class`) Observer](https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/5978359d3521f125b565e63767328ceec911a170/Tests/RVS_GeneralObserverTest/RVS_GeneralObserverTests.swift#L90):
+[Standard (`struct` or `class`) Observer](https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/81f9021fe228f434df4fb17139620a57c7851412/Tests/RVS_GeneralObserverTest/RVS_GeneralObserverTests.swift#L96):
 
     struct BaseObserver: RVS_GeneralObserverProtocol {
         /* ############################################################## */
@@ -107,7 +115,7 @@ These examples are also from the [unit tests](https://github.com/RiftValleySoftw
          */
         let uuid = UUID()
 
-[`class`-only Subscription-Tracking Observer](https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/5978359d3521f125b565e63767328ceec911a170/Tests/RVS_GeneralObserverTest/RVS_GeneralObserverTests.swift#L189):
+[`class`-only Subscription-Tracking Observer](https://github.com/RiftValleySoftware/RVS_GeneralObserver/blob/81f9021fe228f434df4fb17139620a57c7851412/Tests/RVS_GeneralObserverTest/RVS_GeneralObserverTests.swift#L196):
 
     class SubTrackerObserver: RVS_GeneralObserverSubTrackerProtocol {
         /* ############################################################## */
