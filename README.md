@@ -98,7 +98,7 @@ You will need to create two stored properties in your implementation (the follow
 
 The `uuid` property is a "set and forget" property. Simply do exactly as above, and never worry about it afterwards.
 
-The `observers` Array is also one you're unlikely to use, but it is where subscribers are tracked.
+The `observers` Array is also one you're unlikely to use directly (but you'll probably cast it). It is where subscribers are tracked.
 
 ### Observers
 
