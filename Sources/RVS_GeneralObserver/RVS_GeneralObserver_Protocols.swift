@@ -291,6 +291,16 @@ public protocol RVS_GeneralObserverProtocol {
      */
     @discardableResult
     func unsubscribeFrom(_: RVS_GeneralObservableProtocol) -> Bool
+    
+    /* ################################################################## */
+    /**
+     Subscribes us to an Observable.
+     
+     - parameter: The Observable we're subscribing to.
+     - returns: Our instance, or nil, if the subscription failed. Can be ignored.
+     */
+    @discardableResult
+    func subscribeTo(_ inObservableInstance: RVS_GeneralObservableProtocol) -> RVS_GeneralObserverProtocol?
 
     /* ################################################################################################################################## */
     // MARK: - OPTIONAL CALLBACKS
@@ -336,6 +346,13 @@ extension RVS_GeneralObserverProtocol {
      */
     @discardableResult
     public func unsubscribeFrom(_ inObservable: RVS_GeneralObservableProtocol) -> Bool { nil != inObservable.unsubscribe(self) }
+    
+    /* ################################################################## */
+    /**
+     Default asks the Observable to sign us up.
+     */
+    @discardableResult
+    public func subscribeTo(_ inObservableInstance: RVS_GeneralObservableProtocol) -> RVS_GeneralObserverProtocol? { inObservableInstance.subscribe(self) }
 
     /* ################################################################## */
     /**

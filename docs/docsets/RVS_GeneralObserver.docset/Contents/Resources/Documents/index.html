@@ -1,84 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>  Reference</title>
+    <title>RVS_GeneralObserver  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
-    <meta charset="utf-8">
+    <meta charset='utf-8'>
+	<meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1.0" />
     <script src="js/jquery.min.js" defer></script>
     <script src="js/jazzy.js" defer></script>
     
-    <script src="js/lunr.min.js" defer></script>
-    <script src="js/typeahead.jquery.js" defer></script>
-    <script src="js/jazzy.search.js" defer></script>
   </head>
   <body>
-
-
-    <a title="  Reference"></a>
-
-    <header class="header">
-      <p class="header-col header-col--primary">
-        <a class="header-link" href="index.html">
-          RVS_BTDriver Public API Doumentation
-        </a>
-         (100% documented)
-      </p>
+    <a title="RVS_GeneralObserver  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p>
+          <a href="index.html">RVS_BTDriver Public API Doumentation</a>
+          <span class="no-mobile"> (100% documented)</span>
+        </p>
     
-      <p class="header-col--secondary">
-        <form role="search" action="search.json">
-          <input type="text" placeholder="Search documentation" data-typeahead>
-        </form>
-      </p>
-    
-        <p class="header-col header-col--secondary">
-          <a class="header-link" href="https://github.com/RiftValleySoftware/RVS_GeneralObserver">
-            <img class="header-icon" src="img/gh.png"/>
-            View on GitHub
+        <p class="header-right">
+          <a href="https://github.com/RiftValleySoftware/RVS_GeneralObserver">
+            <img src="img/gh.png"/>
+            <span class="no-mobile">View on GitHub</span>
           </a>
         </p>
     
+      </div>
     </header>
-
-    <p class="breadcrumbs">
-      <a class="breadcrumb" href="index.html"> Reference</a>
-      <img class="carat" src="img/carat.png" />
-        Reference
-    </p>
-
-    <div class="content-wrapper">
-      <nav class="navigation">
-        <ul class="nav-groups">
-          <li class="nav-group-name">
-            <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Extensions/Array.html">Array</a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-group-name">
-            <a class="nav-group-name-link" href="Protocols.html">Protocols</a>
-            <ul class="nav-group-tasks">
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Protocols/RVS_GeneralObservableProtocol.html">RVS_GeneralObservableProtocol</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Protocols/RVS_GeneralObserverProtocol.html">RVS_GeneralObserverProtocol</a>
-              </li>
-              <li class="nav-group-task">
-                <a class="nav-group-task-link" href="Protocols/RVS_GeneralObserverSubTrackerProtocol.html">RVS_GeneralObserverSubTrackerProtocol</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <article class="main-content">
-
-        <section class="section">
-          <div class="section-content top-matter">
-            
-            <p><img src="icon.png" alt="Icon"></p>
+    <div id="breadcrumbs-container">
+      <div class="content-wrapper">
+        <p id="breadcrumbs">
+          <span class="no-mobile">
+            <a href="index.html">RVS_GeneralObserver Reference</a>
+            <img id="carat" src="img/carat.png" />
+          </span>
+          RVS_GeneralObserver  Reference
+        </p>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="article-wrapper">
+        <article class="main-content">
+          <section>
+            <section class="section">
+              
+              <p><img src="icon.png" alt="Icon"></p>
 <h1 id='rvs_generalobserver' class='heading'>RVS_GeneralObserver</h1>
 <h2 id='description' class='heading'>DESCRIPTION</h2>
 
@@ -172,7 +139,9 @@
 
 <p>The <code>uuid</code> property is a &ldquo;set and forget&rdquo; property. Simply do exactly as above, and never worry about it afterwards.</p>
 
-<p>The <code>observers</code> Array is also one you&rsquo;re unlikely to use, but it is where subscribers are tracked.</p>
+<p>The <code>observers</code> Array is also one you&rsquo;re unlikely to use directly (but you&rsquo;ll probably cast it). It is where subscribers are tracked. This is how your observable will find broadcast targets. Normally, you&rsquo;ll probably cast this to an Array of more specific classes, like so:</p>
+<pre class="highlight plaintext"><code>var castArray: [MySpecificSubscriberThatConformsToRVS_GeneralObserverProtocol] { observers as? [MySpecificSubscriberThatConformsToRVS_GeneralObserverProtocol] ?? [] }
+</code></pre>
 <h3 id='observers' class='heading'>Observers</h3>
 
 <p>We have two types of Observers. One is a &ldquo;generic&rdquo; one, that can be applied to <code>struct</code>s and <code>class</code>es, that does not track the Observables to which an Observer is subscribed, and the other is a <code>class</code>-only variant that tracks an Observer&rsquo;s subscriptions:</p>
@@ -242,16 +211,45 @@
 
 <p>All protocols have an <code>amISubscribed()</code> Boolean method, where you pass in an Observer (or Observable) instance to be tested to see if an Observer is subscribed to an Observable.</p>
 
-          </div>
+            </section>
+          </section>
+        </article>
+      </div>
+      <div class="nav-wrapper">
+        <nav class="nav-bottom">
+          <ul class="nav-groups">
+            <li class="nav-group-name">
+              <a href="Extensions.html">Extensions</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="Extensions/Array.html">Array</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-group-name">
+              <a href="Protocols.html">Protocols</a>
+              <ul class="nav-group-tasks">
+                <li class="nav-group-task">
+                  <a href="Protocols/RVS_GeneralObservableProtocol.html">RVS_GeneralObservableProtocol</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/RVS_GeneralObserverProtocol.html">RVS_GeneralObserverProtocol</a>
+                </li>
+                <li class="nav-group-task">
+                  <a href="Protocols/RVS_GeneralObserverSubTrackerProtocol.html">RVS_GeneralObserverSubTrackerProtocol</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="footer-wrapper">
+        <section id="footer">
+          <p>&copy; 2020 <a class="link" href="https://riftvalleysoftware.com" target="_blank" rel="external">The</a>. All rights reserved. (Last updated: 2020-09-02)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
         </section>
-
-
-      </article>
+      </div>
     </div>
-    <section class="footer">
-      <p>&copy; 2020 <a class="link" href="" target="_blank" rel="external"></a>. All rights reserved. (Last updated: 2020-08-31)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external">jazzy ♪♫ v0.13.5</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external">Realm</a> project.</p>
-    </section>
   </body>
 </div>
 </html>

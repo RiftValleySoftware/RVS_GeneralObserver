@@ -171,7 +171,8 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
         observable.expectationSubscribe = basicTestExpectationSubscribe
         observable.expectationUnsubscribe = basicTestExpectationUnsubscribe
         
-        for observer in observerArray { XCTAssertNotNil(observable.subscribe(observer)) }
+        // This also tests the subscribeTo method.
+        for observer in observerArray { XCTAssertNotNil(observer.subscribeTo(observable)) }
         XCTAssertEqual(numberOfObservers, observable.observers.count)
 
         wait(for: [basicTestExpectationSubscribe], timeout: 0.1)
@@ -185,7 +186,6 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
 
         wait(for: [basicTestExpectationUnsubscribe], timeout: 0.1)
     }
-
     
     /* ################################################################################################################################## */
     // MARK: - Specialized Subscription-Tracking Observer (As A Class) -
