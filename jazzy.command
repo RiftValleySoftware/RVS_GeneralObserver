@@ -5,7 +5,7 @@ cd "${MY_SCRIPT_PATH}"
 rm -drf docs/*
 
 jazzy   --readme ./README-API.md \
-        --author The Great Rift Valley Software Company \
+        --author The\ Great\ Rift\ Valley\ Software\ Company \
         --author_url https://riftvalleysoftware.com \
         --github_url https://github.com/RiftValleySoftware/RVS_GeneralObserver \
         --title RVS_BTDriver\ Public\ API\ Doumentation \
