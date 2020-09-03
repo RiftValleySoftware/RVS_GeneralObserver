@@ -424,12 +424,15 @@ public protocol RVS_GeneralObserverSubTrackerProtocol: class, RVS_GeneralObserve
 /* ################################################################################################################################## */
 // MARK: - Default Implementation -
 /* ################################################################################################################################## */
+/**
+ These need to be defined as public, so that the protocol doesn't force the user to create them. They generally shouldn't be used, though.
+ */
 extension RVS_GeneralObserverSubTrackerProtocol {
     /* ################################################################## */
     /**
      Default simply adds the observable to our list.
      */
-    func internalSubscribedTo(_ inObservableInstance: RVS_GeneralObservableProtocol) {
+    public func internalSubscribedTo(_ inObservableInstance: RVS_GeneralObservableProtocol) {
         subscriptions.append(inObservableInstance)
     }
     
@@ -437,7 +440,7 @@ extension RVS_GeneralObserverSubTrackerProtocol {
     /**
      Default simply removes the observable from our list.
      */
-    func internalUnsubscribedFrom(_ inObservableInstance: RVS_GeneralObservableProtocol) {
+    public func internalUnsubscribedFrom(_ inObservableInstance: RVS_GeneralObservableProtocol) {
         for elem in subscriptions.enumerated() where elem.element.uuid == inObservableInstance.uuid {
             subscriptions.remove(at: elem.offset)
             break
