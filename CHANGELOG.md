@@ -1,5 +1,11 @@
 # RVS_GeneralObserver Change Log
 
+## 1.0.2.0000
+
+- **September 3, 2020**
+
+- The subtracker internal methods needed to have their defaults declared public, in order to avoid having them forced on conformant classes.
+
 ## 1.0.1.0000
 
 - **September 2, 2020**
