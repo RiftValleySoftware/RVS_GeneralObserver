@@ -168,6 +168,6 @@ The Observable protocol has a single optional callback:
 
 This is called whenever an Observer subscribes or unsubscribes (the second argument indicates that).
 
-Once you have set up the `class`es (or `struct`s), you can then use the `observers` property (Observable) or the `subscriptions` property (the subcriber-tracking variant of the Observer protocol) to access and interact with the various target, recasting, as necessary.
+Once you have set up the `class`es (or `struct`s), you can then use the `observers` property (Observable) or the `subscriptions` property (the subcriber-tracking variant of the Observer protocol) to access and interact with the various targets, recasting, as necessary.
 
 All protocols have an `amISubscribed()` Boolean method, where you pass in an Observer (or Observable) instance to be tested to see if an Observer is subscribed to an Observable.
