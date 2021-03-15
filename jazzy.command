@@ -8,7 +8,7 @@ jazzy   --readme ./README-API.md \
         --author The\ Great\ Rift\ Valley\ Software\ Company \
         --author_url https://riftvalleysoftware.com \
         --github_url https://github.com/RiftValleySoftware/RVS_GeneralObserver \
-        --title RVS_BTDriver\ Public\ API\ Doumentation \
+        --title RVS_GeneralObserver\ Public\ API\ Doumentation \
         --min_acl public \
         --module RVS_GeneralObserver \
         --theme jony \

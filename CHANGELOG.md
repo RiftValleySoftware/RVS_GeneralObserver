@@ -1,5 +1,11 @@
 # RVS_GeneralObserver Change Log
 
+## 1.0.3.0000
+
+- **March 15, 2021**
+
+- The Jazzy command had a typo.
+
 ## 1.0.2.0000
 
 - **September 3, 2020**
