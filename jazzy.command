@@ -4,7 +4,7 @@ MY_SCRIPT_PATH=`dirname "${BASH_SOURCE[0]}"`
 cd "${MY_SCRIPT_PATH}"
 rm -drf docs/*
 
-jazzy   --readme ./README-API.md \
+jazzy   --readme ./README.md \
         --author The\ Great\ Rift\ Valley\ Software\ Company \
         --author_url https://riftvalleysoftware.com \
         --github_url https://github.com/RiftValleySoftware/RVS_GeneralObserver \
