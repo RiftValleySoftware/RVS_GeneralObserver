@@ -48,7 +48,6 @@
 			isa = PBXGroup;
 			children = (
 				D425456F24F984C800C6E362 /* RVS_GeneralObserverTests.swift */,
-				D425457024F984C800C6E362 /* Info.plist */,
 			);
 			path = RVS_GeneralObserverTest;
 			sourceTree = "<group>";
@@ -65,6 +64,7 @@
 		D43B28C424F7CB51007755B3 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
+				D425457024F984C800C6E362 /* Info.plist */,
 				D425456E24F984C800C6E362 /* RVS_GeneralObserverTest */,
 			);
 			path = Tests;
@@ -246,7 +246,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = KSAUGZFWP2;
-				INFOPLIST_FILE = Tests/RVS_GeneralObserverTest/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -266,7 +266,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = KSAUGZFWP2;
-				INFOPLIST_FILE = Tests/RVS_GeneralObserverTest/Info.plist;
+				INFOPLIST_FILE = Tests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
