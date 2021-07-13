@@ -1,5 +1,12 @@
 # RVS_GeneralObserver Change Log
 
+## 1.0.4.0000
+
+- **July 13, 2021**
+
+- Added code coverage to the tests.
+- Updated to latest Swift/tools version.
+
 ## 1.0.3.0000
 
 - **March 15, 2021**
