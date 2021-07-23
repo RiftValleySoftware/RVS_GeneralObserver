@@ -306,6 +306,19 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
         
         XCTAssertEqual(0, observables.first?.observers.count)
         XCTAssertEqual(0, observables.last?.observers.count)
+        
+        observables.forEach { observable in
+            if 0 < observable.observers.count {
+                XCTAssertEqual(numberOfObservers, observable.observers.count)
+            } else {
+                nonSubscribedCount += 1
+            }
+            observable.observers.forEach { observer in
+                XCTAssertTrue(observer.unsubscribeFrom(observable))
+                XCTAssertFalse(observer.amISubscribed(observable))
+                XCTAssertFalse(observable.amISubscribed(observer))
+            }
+        }
     }
     
     /* ################################################################## */
@@ -410,5 +423,8 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
             XCTAssertEqual(randomObserverUUID, observableFromUUID.uuid)
             XCTAssertEqual(randomObserverUUIDString, observableFromUUID.uuid.uuidString)
         }
+        
+        XCTAssertNil(observers["HIHOWAYA"])
+        XCTAssertNil(observables["HIHOWAYA"])
     }
 }

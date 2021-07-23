@@ -2,9 +2,10 @@
 
 ## 1.0.4.0000
 
-- **July 13, 2021**
+- **July 23, 2021**
 
 - Added code coverage to the tests.
+- Tweaked the tests to improve coverage.
 - Updated to latest Swift/tools version.
 
 ## 1.0.3.0000
