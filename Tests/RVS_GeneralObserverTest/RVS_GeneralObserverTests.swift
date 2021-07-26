@@ -427,4 +427,28 @@ class RVS_GeneralObserverBasicTests: XCTestCase {
         XCTAssertNil(observers["HIHOWAYA"])
         XCTAssertNil(observables["HIHOWAYA"])
     }
+    
+    /* ################################################################## */
+    /**
+     We test the protocol defaults (for code coverage).
+     */
+    func testProtocolDefault() {
+        class EmptyObservable: RVS_GeneralObservableProtocol {
+            var uuid: UUID = UUID()
+            var observers: [RVS_GeneralObserverProtocol] = []
+        }
+        
+        class EmptyObserver: RVS_GeneralObserverProtocol {
+            var uuid: UUID = UUID()
+        }
+        
+        let observable = EmptyObservable()
+        
+        let observer = EmptyObserver()
+        
+        observable.subscribe(observer)
+        
+        XCTAssertTrue(observer.amISubscribed(observable))
+        XCTAssertTrue(observable.amISubscribed(observer))
+    }
 }

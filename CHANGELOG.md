@@ -2,7 +2,7 @@
 
 ## 1.0.4.0000
 
-- **July 23, 2021**
+- **July 26, 2021**
 
 - Added code coverage to the tests.
 - Tweaked the tests to improve coverage.
