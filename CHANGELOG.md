@@ -1,5 +1,11 @@
 # RVS_GeneralObserver Change Log
 
+## 1.0.5.0000
+
+- **September 23, 2021**
+
+- Updated to the latest toolchains.
+
 ## 1.0.4.0000
 
 - **July 26, 2021**
