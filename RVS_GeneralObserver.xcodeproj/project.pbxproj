@@ -27,6 +27,7 @@
 		D425456F24F984C800C6E362 /* RVS_GeneralObserverTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVS_GeneralObserverTests.swift; sourceTree = "<group>"; };
 		D425457024F984C800C6E362 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D437271A24F93E3E000346BC /* RVS_GeneralObserver_Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVS_GeneralObserver_Protocols.swift; sourceTree = "<group>"; };
+		D492F39627A41F1600DCC9FA /* RVS_GeneralObserver.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = RVS_GeneralObserver.docc; sourceTree = "<group>"; };
 		D4E744E024FAC24E008DCFA0 /* Warnings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
 		D4F81C1D24F7ED7400BDE3D0 /* RVS_GeneralObserver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = RVS_GeneralObserver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F81C2C24F7EE0500BDE3D0 /* Info-MacOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-MacOS.plist"; sourceTree = "<group>"; };
@@ -74,6 +75,7 @@
 			isa = PBXGroup;
 			children = (
 				D437271A24F93E3E000346BC /* RVS_GeneralObserver_Protocols.swift */,
+				D492F39627A41F1600DCC9FA /* RVS_GeneralObserver.docc */,
 			);
 			path = RVS_GeneralObserver;
 			sourceTree = "<group>";
@@ -423,7 +425,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.riftvalleysoftware.RVS-GoTennaDriver-MacOS";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
@@ -454,7 +456,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 1.0.7;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.riftvalleysoftware.RVS-GoTennaDriver-MacOS";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SDKROOT = macosx;
