@@ -1,5 +1,11 @@
 # RVS_GeneralObserver Change Log
 
+## 1.0.8
+
+- **March 15, 2021**
+
+- Updated the tools. No functional or API changes.
+
 ## 1.0.7
 
 - **January 28, 2021**
