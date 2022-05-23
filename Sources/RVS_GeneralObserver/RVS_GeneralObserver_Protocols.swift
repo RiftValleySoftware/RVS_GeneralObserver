@@ -1,5 +1,5 @@
 /**
-    © Copyright 2021, The Great Rift Valley Software Company
+    © Copyright 2021-2022, The Great Rift Valley Software Company
      
     LICENSE:
 
@@ -19,7 +19,7 @@
 
     The Great Rift Valley Software Company: https://riftvalleysoftware.com
 
-    Verison: 1.0.8
+    Verison: 1.0.9
  */
 
 import Foundation   // Required for UUIDs

@@ -1,5 +1,11 @@
 # RVS_GeneralObserver Change Log
 
+## 1.0.9
+
+- **May 23, 2021**
+
+- Added unit tests for all platforms. No functional or API changes.
+
 ## 1.0.8
 
 - **March 15, 2021**

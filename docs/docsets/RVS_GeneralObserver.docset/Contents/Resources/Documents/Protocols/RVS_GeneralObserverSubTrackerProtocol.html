@@ -4,158 +4,194 @@
     <title>RVS_GeneralObserverSubTrackerProtocol Protocol Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
-    <meta charset='utf-8'>
-	<meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1.0" />
+    <meta charset="utf-8">
     <script src="../js/jquery.min.js" defer></script>
     <script src="../js/jazzy.js" defer></script>
     
+    <script src="../js/lunr.min.js" defer></script>
+    <script src="../js/typeahead.jquery.js" defer></script>
+    <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
+
     <a name="//apple_ref/swift/Protocol/RVS_GeneralObserverSubTrackerProtocol" class="dashAnchor"></a>
+
     <a title="RVS_GeneralObserverSubTrackerProtocol Protocol Reference"></a>
-    <header>
-      <div class="content-wrapper">
-        <p>
-          <a href="../index.html">RVS_GeneralObserver Public API Doumentation</a>
-          <span class="no-mobile"> (100% documented)</span>
-        </p>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="../index.html">
+          RVS_GeneralObserver Public API Doumentation
+        </a>
+         (100% documented)
+      </p>
     
-        <p class="header-right">
-          <a href="https://github.com/RiftValleySoftware/RVS_GeneralObserver">
-            <img src="../img/gh.png" alt="GitHub"/>
-            <span class="no-mobile">View on GitHub</span>
+      <div class="header-col--secondary">
+        <form role="search" action="../search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </div>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/RiftValleySoftware/RVS_GeneralObserver">
+            <img class="header-icon" src="../img/gh.png" alt="GitHub"/>
+            View on GitHub
           </a>
         </p>
     
-      </div>
     </header>
-    <div id="breadcrumbs-container">
-      <div class="content-wrapper">
-        <p id="breadcrumbs">
-          <span class="no-mobile">
-            <a href="../index.html">RVS_GeneralObserver Reference</a>
-            <img id="carat" src="../img/carat.png" alt=""/>
-          </span>
-          RVS_GeneralObserverSubTrackerProtocol Protocol Reference
-        </p>
-      </div>
-    </div>
-    <div class="wrapper">
-      <div class="article-wrapper">
-        <article class="main-content">
-          <section>
-            <section class="section">
-              <h1>RVS_GeneralObserverSubTrackerProtocol</h1>
-                <div class="declaration">
-                  <div class="language">
-                    
-                    <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">RVS_GeneralObserverSubTrackerProtocol</span> <span class="p">:</span> <span class="kt">AnyObject</span><span class="p">,</span> <span class="kt"><a href="../Protocols/RVS_GeneralObserverProtocol.html">RVS_GeneralObserverProtocol</a></span></code></pre>
 
-                  </div>
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="../index.html">RVS_GeneralObserver Reference</a>
+      <img class="carat" src="../img/carat.png" alt=""/>
+      RVS_GeneralObserverSubTrackerProtocol Protocol Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Extensions/Array.html">Array</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="../Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/RVS_GeneralObservableProtocol.html">RVS_GeneralObservableProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/RVS_GeneralObserverProtocol.html">RVS_GeneralObserverProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="../Protocols/RVS_GeneralObserverSubTrackerProtocol.html">RVS_GeneralObserverSubTrackerProtocol</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>RVS_GeneralObserverSubTrackerProtocol</h1>
+              <div class="declaration">
+                <div class="language">
+                  
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">RVS_GeneralObserverSubTrackerProtocol</span> <span class="p">:</span> <span class="kt">AnyObject</span><span class="p">,</span> <span class="kt"><a href="../Protocols/RVS_GeneralObserverProtocol.html">RVS_GeneralObserverProtocol</a></span></code></pre>
+
                 </div>
-              <p>This is a class protocol, so we can mutate the properties in the protocol extension, and we won&rsquo;t have the issue of unlinked references.</p>
+              </div>
+            <p>This is a class protocol, so we can mutate the properties in the protocol extension, and we won&rsquo;t have the issue of unlinked references.</p>
 
-            </section>
-            <section class="section task-group-section">
-              <div class="task-group">
-                <ul>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP13subscriptionsSayAA0a1_b10ObservableF0_pGvp"></a>
-                      <a name="//apple_ref/swift/Property/subscriptions" class="dashAnchor"></a>
-                      <a class="token" href="#/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP13subscriptionsSayAA0a1_b10ObservableF0_pGvp">subscriptions</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>This is where we will track our subscriptions.</p>
+          </div>
+        </section>
 
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">subscriptions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/RVS_GeneralObservableProtocol.html">RVS_GeneralObservableProtocol</a></span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP13subscriptionsSayAA0a1_b10ObservableF0_pGvp"></a>
+                    <a name="//apple_ref/swift/Property/subscriptions" class="dashAnchor"></a>
+                    <a class="token" href="#/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP13subscriptionsSayAA0a1_b10ObservableF0_pGvp">subscriptions</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is where we will track our subscriptions.</p>
 
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP14unsubscribeAllSayAA0a1_b10ObservableF0_pGyF"></a>
-                      <a name="//apple_ref/swift/Method/unsubscribeAll()" class="dashAnchor"></a>
-                      <a class="token" href="#/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP14unsubscribeAllSayAA0a1_b10ObservableF0_pGyF">unsubscribeAll()</a>
-                      </code>
-                        <span class="declaration-note">
-                          Default implementation
-                        </span>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>This unsubs the observer from all of its subscriptions.</p>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="k">var</span> <span class="nv">subscriptions</span><span class="p">:</span> <span class="p">[</span><span class="kt"><a href="../Protocols/RVS_GeneralObservableProtocol.html">RVS_GeneralObservableProtocol</a></span><span class="p">]</span> <span class="p">{</span> <span class="k">get</span> <span class="k">set</span> <span class="p">}</span></code></pre>
 
                         </div>
-                        <h4>Default Implementation</h4>
-                        <div class="default_impl abstract">
-                          <p>Default unsubs us from all of our subscriptions.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP14unsubscribeAllSayAA0a1_b10ObservableF0_pGyF"></a>
+                    <a name="//apple_ref/swift/Method/unsubscribeAll()" class="dashAnchor"></a>
+                    <a class="token" href="#/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP14unsubscribeAllSayAA0a1_b10ObservableF0_pGyF">unsubscribeAll()</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This unsubs the observer from all of its subscriptions.</p>
 
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p>Default unsubs us from all of our subscriptions.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">@discardableResult</span>
 <span class="kd">func</span> <span class="nf">unsubscribeAll</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="p">[</span><span class="kt"><a href="../Protocols/RVS_GeneralObservableProtocol.html">RVS_GeneralObservableProtocol</a></span><span class="p">]</span></code></pre>
 
-                          </div>
                         </div>
-                        <div>
-                          <h4>Return Value</h4>
-                          <p>An Array, of all the observables it unsubbed from.</p>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="task-group">
-                <div class="task-name-container">
-                  <a name="/INTERNAL-USE%20ONLY"></a>
-                  <a name="//apple_ref/swift/Section/INTERNAL-USE ONLY" class="dashAnchor"></a>
-                  <div class="section-name-container">
-                    <a class="section-name-link" href="#/INTERNAL-USE%20ONLY"></a>
-                    <h3 class="section-name"><span>INTERNAL-USE ONLY</span>
-</h3>
+                      </div>
+                      <div>
+                        <h4>Return Value</h4>
+                        <p>An Array, of all the observables it unsubbed from.</p>
+                      </div>
+                    </section>
                   </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/INTERNAL-USE%20ONLY"></a>
+                <a name="//apple_ref/swift/Section/INTERNAL-USE ONLY" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/INTERNAL-USE%20ONLY"></a>
+                  <h3 class="section-name"><span>INTERNAL-USE ONLY</span>
+</h3>
                 </div>
-                <ul>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP20internalSubscribedToyyAA0a1_b10ObservableF0_pF"></a>
-                      <a name="//apple_ref/swift/Method/internalSubscribedTo(_:)" class="dashAnchor"></a>
-                      <a class="token" href="#/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP20internalSubscribedToyyAA0a1_b10ObservableF0_pF">internalSubscribedTo(_:<wbr>)</a>
-                      </code>
-                        <span class="declaration-note">
-                          Default implementation
-                        </span>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>This is called after being subscribed to an Observable.</p>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP20internalSubscribedToyyAA0a1_b10ObservableF0_pF"></a>
+                    <a name="//apple_ref/swift/Method/internalSubscribedTo(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP20internalSubscribedToyyAA0a1_b10ObservableF0_pF">internalSubscribedTo(_:<wbr>)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is called after being subscribed to an Observable.</p>
 
 <p>This is a method that is unique to this protocol, and is used for internal management.</p>
 
@@ -163,40 +199,40 @@
 
 <p>In the default implementation, this is called in the subscription execution context, so that will be the thread used for the callback.</p>
 
-                        </div>
-                        <h4>Default Implementation</h4>
-                        <div class="default_impl abstract">
-                          <p>Default simply adds the observable to our list.</p>
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p>Default simply adds the observable to our list.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">internalSubscribedTo</span><span class="p">(</span><span class="n">_</span> <span class="nv">inObservableInstance</span><span class="p">:</span> <span class="kt"><a href="../Protocols/RVS_GeneralObservableProtocol.html">RVS_GeneralObservableProtocol</a></span><span class="p">)</span></code></pre>
 
                         </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">internalSubscribedTo</span><span class="p">(</span><span class="n">_</span> <span class="nv">inObservableInstance</span><span class="p">:</span> <span class="kt"><a href="../Protocols/RVS_GeneralObservableProtocol.html">RVS_GeneralObservableProtocol</a></span><span class="p">)</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP24internalUnsubscribedFromyyAA0a1_b10ObservableF0_pF"></a>
-                      <a name="//apple_ref/swift/Method/internalUnsubscribedFrom(_:)" class="dashAnchor"></a>
-                      <a class="token" href="#/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP24internalUnsubscribedFromyyAA0a1_b10ObservableF0_pF">internalUnsubscribedFrom(_:<wbr>)</a>
-                      </code>
-                        <span class="declaration-note">
-                          Default implementation
-                        </span>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>This is called after being unsubscribed from an Observable.</p>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP24internalUnsubscribedFromyyAA0a1_b10ObservableF0_pF"></a>
+                    <a name="//apple_ref/swift/Method/internalUnsubscribedFrom(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP24internalUnsubscribedFromyyAA0a1_b10ObservableF0_pF">internalUnsubscribedFrom(_:<wbr>)</a>
+                    </code>
+                      <span class="declaration-note">
+                        Default implementation
+                      </span>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is called after being unsubscribed from an Observable.</p>
 
 <p>This is a method that is unique to this protocol, and is used for internal management.</p>
 
@@ -204,63 +240,33 @@
 
 <p>In the default implementation, this is called in the unsubscription execution context, so that will be the thread used for the callback.</p>
 
-                        </div>
-                        <h4>Default Implementation</h4>
-                        <div class="default_impl abstract">
-                          <p>Default simply removes the observable from our list.</p>
+                      </div>
+                      <h4>Default Implementation</h4>
+                      <div class="default_impl abstract">
+                        <p>Default simply removes the observable from our list.</p>
+
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">internalUnsubscribedFrom</span><span class="p">(</span><span class="n">_</span> <span class="nv">inObservableInstance</span><span class="p">:</span> <span class="kt"><a href="../Protocols/RVS_GeneralObservableProtocol.html">RVS_GeneralObservableProtocol</a></span><span class="p">)</span></code></pre>
 
                         </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">func</span> <span class="nf">internalUnsubscribedFrom</span><span class="p">(</span><span class="n">_</span> <span class="nv">inObservableInstance</span><span class="p">:</span> <span class="kt"><a href="../Protocols/RVS_GeneralObservableProtocol.html">RVS_GeneralObservableProtocol</a></span><span class="p">)</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </section>
-          </section>
-        </article>
-      </div>
-      <div class="nav-wrapper">
-        <nav class="nav-bottom">
-          <ul class="nav-groups">
-            <li class="nav-group-name">
-              <a href="../Extensions.html">Extensions</a>
-              <ul class="nav-group-tasks">
-                <li class="nav-group-task">
-                  <a href="../Extensions/Array.html">Array</a>
+                      </div>
+                    </section>
+                  </div>
                 </li>
               </ul>
-            </li>
-            <li class="nav-group-name">
-              <a href="../Protocols.html">Protocols</a>
-              <ul class="nav-group-tasks">
-                <li class="nav-group-task">
-                  <a href="../Protocols/RVS_GeneralObservableProtocol.html">RVS_GeneralObservableProtocol</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Protocols/RVS_GeneralObserverProtocol.html">RVS_GeneralObserverProtocol</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="../Protocols/RVS_GeneralObserverSubTrackerProtocol.html">RVS_GeneralObserverSubTrackerProtocol</a>
-                </li>
-              </ul>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="footer-wrapper">
-        <section id="footer">
-          <p>&copy; 2022 <a class="link" href="https://riftvalleysoftware.com" target="_blank" rel="external noopener">The Great Rift Valley Software Company</a>. All rights reserved. (Last updated: 2022-03-15)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+            </div>
+          </div>
         </section>
-      </div>
+
+      </article>
     </div>
+    <section class="footer">
+      <p>&copy; 2022 <a class="link" href="https://riftvalleysoftware.com" target="_blank" rel="external noopener">The Great Rift Valley Software Company</a>. All rights reserved. (Last updated: 2022-05-23)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
   </body>
 </html>

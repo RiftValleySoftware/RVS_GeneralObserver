@@ -11,8 +11,8 @@ jazzy   --readme ./README.md \
         --title RVS_GeneralObserver\ Public\ API\ Doumentation \
         --min_acl public \
         --module RVS_GeneralObserver \
-        --theme jony \
-        --build-tool-arguments -scheme,RVS_GeneralObserver
+        --theme fullwidth \
+        --build-tool-arguments -scheme,"RVS_GeneralObserver (MacOS)"
 cp icon.png docs/icon.png
 
 cd "${CWD}"

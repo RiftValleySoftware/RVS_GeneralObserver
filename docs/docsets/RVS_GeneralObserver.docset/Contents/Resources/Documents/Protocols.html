@@ -4,218 +4,224 @@
     <title>Protocols  Reference</title>
     <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="css/highlight.css" />
-    <meta charset='utf-8'>
-	<meta name="viewport" content="width=device-width, viewport-fit=cover, initial-scale=1.0" />
+    <meta charset="utf-8">
     <script src="js/jquery.min.js" defer></script>
     <script src="js/jazzy.js" defer></script>
     
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
   </head>
   <body>
+
     <a name="//apple_ref/swift/Section/Protocols" class="dashAnchor"></a>
+
     <a title="Protocols  Reference"></a>
-    <header>
-      <div class="content-wrapper">
-        <p>
-          <a href="index.html">RVS_GeneralObserver Public API Doumentation</a>
-          <span class="no-mobile"> (100% documented)</span>
-        </p>
+
+    <header class="header">
+      <p class="header-col header-col--primary">
+        <a class="header-link" href="index.html">
+          RVS_GeneralObserver Public API Doumentation
+        </a>
+         (100% documented)
+      </p>
     
-        <p class="header-right">
-          <a href="https://github.com/RiftValleySoftware/RVS_GeneralObserver">
-            <img src="img/gh.png" alt="GitHub"/>
-            <span class="no-mobile">View on GitHub</span>
+      <div class="header-col--secondary">
+        <form role="search" action="search.json">
+          <input type="text" placeholder="Search documentation" data-typeahead>
+        </form>
+      </div>
+    
+        <p class="header-col header-col--secondary">
+          <a class="header-link" href="https://github.com/RiftValleySoftware/RVS_GeneralObserver">
+            <img class="header-icon" src="img/gh.png" alt="GitHub"/>
+            View on GitHub
           </a>
         </p>
     
-      </div>
     </header>
-    <div id="breadcrumbs-container">
-      <div class="content-wrapper">
-        <p id="breadcrumbs">
-          <span class="no-mobile">
-            <a href="index.html">RVS_GeneralObserver Reference</a>
-            <img id="carat" src="img/carat.png" alt=""/>
-          </span>
-          Protocols  Reference
-        </p>
-      </div>
-    </div>
-    <div class="wrapper">
-      <div class="article-wrapper">
-        <article class="main-content">
-          <section>
-            <section class="section">
-              <h1>Protocols</h1>
-              <p>The following protocols are available globally.</p>
 
-            </section>
-            <section class="section task-group-section">
-              <div class="task-group">
-                <div class="task-name-container">
-                  <a name="/Observable%20Entity%20Protocol"></a>
-                  <a name="//apple_ref/swift/Section/Observable Entity Protocol" class="dashAnchor"></a>
-                  <div class="section-name-container">
-                    <a class="section-name-link" href="#/Observable%20Entity%20Protocol"></a>
-                    <h3 class="section-name"><span>Observable Entity Protocol</span>
+    <p class="breadcrumbs">
+      <a class="breadcrumb" href="index.html">RVS_GeneralObserver Reference</a>
+      <img class="carat" src="img/carat.png" alt=""/>
+      Protocols  Reference
+    </p>
+
+    <div class="content-wrapper">
+      <nav class="navigation">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Extensions.html">Extensions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Extensions/Array.html">Array</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a class="nav-group-name-link" href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/RVS_GeneralObservableProtocol.html">RVS_GeneralObservableProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/RVS_GeneralObserverProtocol.html">RVS_GeneralObserverProtocol</a>
+              </li>
+              <li class="nav-group-task">
+                <a class="nav-group-task-link" href="Protocols/RVS_GeneralObserverSubTrackerProtocol.html">RVS_GeneralObserverSubTrackerProtocol</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+
+        <section class="section">
+          <div class="section-content top-matter">
+            <h1>Protocols</h1>
+            <p>The following protocols are available globally.</p>
+
+          </div>
+        </section>
+
+        <section class="section">
+          <div class="section-content">
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Observable%20Entity%20Protocol"></a>
+                <a name="//apple_ref/swift/Section/Observable Entity Protocol" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Observable%20Entity%20Protocol"></a>
+                  <h3 class="section-name"><span>Observable Entity Protocol</span>
 </h3>
-                  </div>
                 </div>
-                <ul>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:19RVS_GeneralObserver0a1_B18ObservableProtocolP"></a>
-                      <a name="//apple_ref/swift/Protocol/RVS_GeneralObservableProtocol" class="dashAnchor"></a>
-                      <a class="token" href="#/s:19RVS_GeneralObserver0a1_B18ObservableProtocolP">RVS_GeneralObservableProtocol</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>This protocol makes any entity observable, by giving it the infrastructure to subscribe and track observers. It&rsquo;s up to the implementor to
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:19RVS_GeneralObserver0a1_B18ObservableProtocolP"></a>
+                    <a name="//apple_ref/swift/Protocol/RVS_GeneralObservableProtocol" class="dashAnchor"></a>
+                    <a class="token" href="#/s:19RVS_GeneralObserver0a1_B18ObservableProtocolP">RVS_GeneralObservableProtocol</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This protocol makes any entity observable, by giving it the infrastructure to subscribe and track observers. It&rsquo;s up to the implementor to
 actually use this to send messages.</p>
 
 <p>Observables have to be classes. Observers don&rsquo;t need to be classes.</p>
 
 <p>There are two required components: a UUID, which needs to remain constant during the lifetime of the instance, and an Array of observers.</p>
 
-                          <a href="Protocols/RVS_GeneralObservableProtocol.html" class="slightly-smaller">See more</a>
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">RVS_GeneralObservableProtocol</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
+                        <a href="Protocols/RVS_GeneralObservableProtocol.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">RVS_GeneralObservableProtocol</span> <span class="p">:</span> <span class="kt">AnyObject</span></code></pre>
 
-                          </div>
                         </div>
-                      </section>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="task-group">
-                <div class="task-name-container">
-                  <a name="/The%20General%20Observer%20protocol"></a>
-                  <a name="//apple_ref/swift/Section/The General Observer protocol" class="dashAnchor"></a>
-                  <div class="section-name-container">
-                    <a class="section-name-link" href="#/The%20General%20Observer%20protocol"></a>
-                    <h3 class="section-name"><span>The General Observer protocol</span>
-</h3>
+                      </div>
+                    </section>
                   </div>
-                </div>
-                <ul>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:19RVS_GeneralObserver0a1_bC8ProtocolP"></a>
-                      <a name="//apple_ref/swift/Protocol/RVS_GeneralObserverProtocol" class="dashAnchor"></a>
-                      <a class="token" href="#/s:19RVS_GeneralObserver0a1_bC8ProtocolP">RVS_GeneralObserverProtocol</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>This protocol allows any entity to become an observer. The only required component is a UUID.</p>
-
-                          <a href="Protocols/RVS_GeneralObserverProtocol.html" class="slightly-smaller">See more</a>
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">RVS_GeneralObserverProtocol</span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-              <div class="task-group">
-                <div class="task-name-container">
-                  <a name="/Subscription-Tracking%20Observer%20Protocol"></a>
-                  <a name="//apple_ref/swift/Section/Subscription-Tracking Observer Protocol" class="dashAnchor"></a>
-                  <div class="section-name-container">
-                    <a class="section-name-link" href="#/Subscription-Tracking%20Observer%20Protocol"></a>
-                    <h3 class="section-name"><span>Subscription-Tracking Observer Protocol</span>
-</h3>
-                  </div>
-                </div>
-                <ul>
-                  <li class="item">
-                    <div>
-                      <code>
-                      <a name="/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP"></a>
-                      <a name="//apple_ref/swift/Protocol/RVS_GeneralObserverSubTrackerProtocol" class="dashAnchor"></a>
-                      <a class="token" href="#/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP">RVS_GeneralObserverSubTrackerProtocol</a>
-                      </code>
-                    </div>
-                    <div class="height-container">
-                      <div class="pointer-container"></div>
-                      <section class="section">
-                        <div class="pointer"></div>
-                        <div class="abstract">
-                          <p>This is a class protocol, so we can mutate the properties in the protocol extension, and we won&rsquo;t have the issue of unlinked references.</p>
-
-                          <a href="Protocols/RVS_GeneralObserverSubTrackerProtocol.html" class="slightly-smaller">See more</a>
-                        </div>
-                        <div class="declaration">
-                          <h4>Declaration</h4>
-                          <div class="language">
-                            <p class="aside-title">Swift</p>
-                            <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">RVS_GeneralObserverSubTrackerProtocol</span> <span class="p">:</span> <span class="kt">AnyObject</span><span class="p">,</span> <span class="kt"><a href="Protocols/RVS_GeneralObserverProtocol.html">RVS_GeneralObserverProtocol</a></span></code></pre>
-
-                          </div>
-                        </div>
-                      </section>
-                    </div>
-                  </li>
-                </ul>
-              </div>
-            </section>
-          </section>
-        </article>
-      </div>
-      <div class="nav-wrapper">
-        <nav class="nav-bottom">
-          <ul class="nav-groups">
-            <li class="nav-group-name">
-              <a href="Extensions.html">Extensions</a>
-              <ul class="nav-group-tasks">
-                <li class="nav-group-task">
-                  <a href="Extensions/Array.html">Array</a>
                 </li>
               </ul>
-            </li>
-            <li class="nav-group-name">
-              <a href="Protocols.html">Protocols</a>
-              <ul class="nav-group-tasks">
-                <li class="nav-group-task">
-                  <a href="Protocols/RVS_GeneralObservableProtocol.html">RVS_GeneralObservableProtocol</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="Protocols/RVS_GeneralObserverProtocol.html">RVS_GeneralObserverProtocol</a>
-                </li>
-                <li class="nav-group-task">
-                  <a href="Protocols/RVS_GeneralObserverSubTrackerProtocol.html">RVS_GeneralObserverSubTrackerProtocol</a>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/The%20General%20Observer%20protocol"></a>
+                <a name="//apple_ref/swift/Section/The General Observer protocol" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/The%20General%20Observer%20protocol"></a>
+                  <h3 class="section-name"><span>The General Observer protocol</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:19RVS_GeneralObserver0a1_bC8ProtocolP"></a>
+                    <a name="//apple_ref/swift/Protocol/RVS_GeneralObserverProtocol" class="dashAnchor"></a>
+                    <a class="token" href="#/s:19RVS_GeneralObserver0a1_bC8ProtocolP">RVS_GeneralObserverProtocol</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This protocol allows any entity to become an observer. The only required component is a UUID.</p>
+
+                        <a href="Protocols/RVS_GeneralObserverProtocol.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">RVS_GeneralObserverProtocol</span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
                 </li>
               </ul>
-            </li>
-          </ul>
-        </nav>
-      </div>
-      <div class="footer-wrapper">
-        <section id="footer">
-          <p>&copy; 2022 <a class="link" href="https://riftvalleysoftware.com" target="_blank" rel="external noopener">The Great Rift Valley Software Company</a>. All rights reserved. (Last updated: 2022-03-15)</p>
-          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.1</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/Subscription-Tracking%20Observer%20Protocol"></a>
+                <a name="//apple_ref/swift/Section/Subscription-Tracking Observer Protocol" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/Subscription-Tracking%20Observer%20Protocol"></a>
+                  <h3 class="section-name"><span>Subscription-Tracking Observer Protocol</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP"></a>
+                    <a name="//apple_ref/swift/Protocol/RVS_GeneralObserverSubTrackerProtocol" class="dashAnchor"></a>
+                    <a class="token" href="#/s:19RVS_GeneralObserver0a1_bC18SubTrackerProtocolP">RVS_GeneralObserverSubTrackerProtocol</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>This is a class protocol, so we can mutate the properties in the protocol extension, and we won&rsquo;t have the issue of unlinked references.</p>
+
+                        <a href="Protocols/RVS_GeneralObserverSubTrackerProtocol.html" class="slightly-smaller">See more</a>
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">protocol</span> <span class="kt">RVS_GeneralObserverSubTrackerProtocol</span> <span class="p">:</span> <span class="kt">AnyObject</span><span class="p">,</span> <span class="kt"><a href="Protocols/RVS_GeneralObserverProtocol.html">RVS_GeneralObserverProtocol</a></span></code></pre>
+
+                        </div>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
         </section>
-      </div>
+
+      </article>
     </div>
+    <section class="footer">
+      <p>&copy; 2022 <a class="link" href="https://riftvalleysoftware.com" target="_blank" rel="external noopener">The Great Rift Valley Software Company</a>. All rights reserved. (Last updated: 2022-05-23)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+    </section>
   </body>
 </html>
