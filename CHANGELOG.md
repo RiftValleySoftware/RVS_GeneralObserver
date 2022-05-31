@@ -1,5 +1,11 @@
 # RVS_GeneralObserver Change Log
 
+## 1.1.0
+
+- **May 31, 2021**
+
+- Removed the dash-notation. No API changes.
+
 ## 1.0.9
 
 - **May 23, 2021**

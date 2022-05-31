@@ -19,7 +19,7 @@
 
     The Great Rift Valley Software Company: https://riftvalleysoftware.com
 
-    Verison: 1.0.9
+    Verison: 1.1.0
  */
 
 import Foundation   // Required for UUIDs

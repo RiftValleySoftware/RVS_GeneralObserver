@@ -11,7 +11,7 @@ let package = Package(
         .watchOS(.v6)
     ],
     products: [
-        .library(name: "RVS-GeneralObserver",
+        .library(name: "RVS_GeneralObserver",
                  targets: ["RVS_GeneralObserver"]
         )
     ],

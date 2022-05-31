@@ -1,8 +1,6 @@
 /*
 © Copyright 2021-2022, The Great Rift Valley Software Company
 
-Verison: 1.0.9
-
 LICENSE:
 
 MIT License
@@ -20,6 +18,8 @@ IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMA
 CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 The Great Rift Valley Software Company: https://riftvalleysoftware.com
+
+Verison: 1.1.0
 */
 
 import XCTest
