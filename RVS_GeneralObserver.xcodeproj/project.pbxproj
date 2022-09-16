@@ -52,36 +52,6 @@
 		};
 /* End PBXContainerItemProxy section */
 
-/* Begin PBXCopyFilesBuildPhase section */
-		D4F569C7283C316C002DF843 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D4F569D2283C3184002DF843 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D4F569DD283C3197002DF843 /* CopyFiles */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "include/$(PRODUCT_NAME)";
-			dstSubfolderSpec = 16;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		D425456F24F984C800C6E362 /* RVS_GeneralObserverTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVS_GeneralObserverTests.swift; sourceTree = "<group>"; };
 		D425457024F984C800C6E362 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -100,34 +70,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		D4F569BA283C3148002DF843 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D4F569C6283C316C002DF843 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D4F569D1283C3184002DF843 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		D4F569DC283C3197002DF843 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		D4F569EB283C31D0002DF843 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -241,24 +183,13 @@
 		};
 /* End PBXGroup section */
 
-/* Begin PBXHeadersBuildPhase section */
-		D4F569B8283C3148002DF843 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXHeadersBuildPhase section */
-
 /* Begin PBXNativeTarget section */
 		D4F569BB283C3148002DF843 /* RVS_GeneralObserver (MacOS) */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4F569C2283C3148002DF843 /* Build configuration list for PBXNativeTarget "RVS_GeneralObserver (MacOS)" */;
 			buildPhases = (
-				D4F569B8283C3148002DF843 /* Headers */,
+				D446F1F728D50D1300A8D469 /* SwiftLint */,
 				D4F569B9283C3148002DF843 /* Sources */,
-				D4F569BA283C3148002DF843 /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -273,9 +204,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4F569CD283C316C002DF843 /* Build configuration list for PBXNativeTarget "RVS_GeneralObserver (iOS)" */;
 			buildPhases = (
+				D446F1F828D50D2100A8D469 /* SwiftLint */,
 				D4F569C5283C316C002DF843 /* Sources */,
-				D4F569C6283C316C002DF843 /* Frameworks */,
-				D4F569C7283C316C002DF843 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -290,9 +220,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4F569D8283C3184002DF843 /* Build configuration list for PBXNativeTarget "RVS_GeneralObserver (WatchOS)" */;
 			buildPhases = (
+				D446F1F928D50D3100A8D469 /* SwiftLint */,
 				D4F569D0283C3184002DF843 /* Sources */,
-				D4F569D1283C3184002DF843 /* Frameworks */,
-				D4F569D2283C3184002DF843 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -307,9 +236,8 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4F569E3283C3197002DF843 /* Build configuration list for PBXNativeTarget "RVS_GeneralObserver (TVOS)" */;
 			buildPhases = (
+				D446F1FA28D50D3F00A8D469 /* SwiftLint */,
 				D4F569DB283C3197002DF843 /* Sources */,
-				D4F569DC283C3197002DF843 /* Frameworks */,
-				D4F569DD283C3197002DF843 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -326,7 +254,6 @@
 			buildPhases = (
 				D4F569EA283C31D0002DF843 /* Sources */,
 				D4F569EB283C31D0002DF843 /* Frameworks */,
-				D4F569EC283C31D0002DF843 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -344,7 +271,6 @@
 			buildPhases = (
 				D4F569F8283C31E0002DF843 /* Sources */,
 				D4F569F9283C31E0002DF843 /* Frameworks */,
-				D4F569FA283C31E0002DF843 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -362,7 +288,6 @@
 			buildPhases = (
 				D4F56A06283C31EF002DF843 /* Sources */,
 				D4F56A07283C31EF002DF843 /* Frameworks */,
-				D4F56A08283C31EF002DF843 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -380,7 +305,6 @@
 			buildPhases = (
 				D4F56A14283C31FE002DF843 /* Sources */,
 				D4F56A15283C31FE002DF843 /* Frameworks */,
-				D4F56A16283C31FE002DF843 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -399,7 +323,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1340;
+				LastUpgradeCheck = 1400;
 				ORGANIZATIONNAME = "Rift Valley Software, Inc.";
 				TargetAttributes = {
 					D4F569BB283C3148002DF843 = {
@@ -455,36 +379,84 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		D4F569EC283C31D0002DF843 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
+/* Begin PBXShellScriptBuildPhase section */
+		D446F1F728D50D1300A8D469 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if command -v swiftlint\nthen\n    swiftlint\nfi\n";
 		};
-		D4F569FA283C31E0002DF843 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
+		D446F1F828D50D2100A8D469 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if command -v swiftlint\nthen\n    swiftlint\nfi\n";
 		};
-		D4F56A08283C31EF002DF843 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
+		D446F1F928D50D3100A8D469 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if command -v swiftlint\nthen\n    swiftlint\nfi\n";
 		};
-		D4F56A16283C31FE002DF843 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
+		D446F1FA28D50D3F00A8D469 /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
 			buildActionMask = 2147483647;
 			files = (
 			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
 			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if command -v swiftlint\nthen\n    swiftlint\nfi\n";
 		};
-/* End PBXResourcesBuildPhase section */
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D4F569B9283C3148002DF843 /* Sources */ = {
@@ -706,6 +678,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = KSAUGZFWP2;
 				EXECUTABLE_PREFIX = lib;
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
@@ -721,6 +694,7 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = KSAUGZFWP2;
 				EXECUTABLE_PREFIX = lib;
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
@@ -837,6 +811,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = KSAUGZFWP2;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
@@ -855,6 +830,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = KSAUGZFWP2;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.3;

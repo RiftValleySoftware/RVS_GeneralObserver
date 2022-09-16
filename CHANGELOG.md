@@ -1,26 +1,33 @@
 # RVS_GeneralObserver Change Log
 
+## 1.1.1
+
+- **September 16, 2022**
+
+- Updated the tools.
+- Added SwiftLint.
+
 ## 1.1.0
 
-- **May 31, 2021**
+- **May 31, 2022**
 
 - Removed the dash-notation. No API changes.
 
 ## 1.0.9
 
-- **May 23, 2021**
+- **May 23, 2022**
 
 - Added unit tests for all platforms. No functional or API changes.
 
 ## 1.0.8
 
-- **March 15, 2021**
+- **March 15, 2022**
 
 - Updated the tools. No functional or API changes.
 
 ## 1.0.7
 
-- **January 28, 2021**
+- **January 28, 2022**
 
 - Added DocC support. No functional or API changes.
 
