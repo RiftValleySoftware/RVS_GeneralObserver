@@ -8,6 +8,12 @@
       location = "container:"
       name = "Project-Meta">
       <FileRef
+         location = "group:PRIVACY.md">
+      </FileRef>
+      <FileRef
+         location = "group:PrivacyInfo.xcprivacy">
+      </FileRef>
+      <FileRef
          location = "group:README.md">
       </FileRef>
       <FileRef
@@ -24,9 +30,6 @@
       </FileRef>
       <FileRef
          location = "group:jazzy.command">
-      </FileRef>
-      <FileRef
-         location = "group:.swiftlint.yml">
       </FileRef>
    </Group>
 </Workspace>

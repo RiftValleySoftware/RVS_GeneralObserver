@@ -188,7 +188,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4F569C2283C3148002DF843 /* Build configuration list for PBXNativeTarget "RVS_GeneralObserver (MacOS)" */;
 			buildPhases = (
-				D446F1F728D50D1300A8D469 /* SwiftLint */,
 				D4F569B9283C3148002DF843 /* Sources */,
 			);
 			buildRules = (
@@ -204,7 +203,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4F569CD283C316C002DF843 /* Build configuration list for PBXNativeTarget "RVS_GeneralObserver (iOS)" */;
 			buildPhases = (
-				D446F1F828D50D2100A8D469 /* SwiftLint */,
 				D4F569C5283C316C002DF843 /* Sources */,
 			);
 			buildRules = (
@@ -220,7 +218,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4F569D8283C3184002DF843 /* Build configuration list for PBXNativeTarget "RVS_GeneralObserver (WatchOS)" */;
 			buildPhases = (
-				D446F1F928D50D3100A8D469 /* SwiftLint */,
 				D4F569D0283C3184002DF843 /* Sources */,
 			);
 			buildRules = (
@@ -236,7 +233,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4F569E3283C3197002DF843 /* Build configuration list for PBXNativeTarget "RVS_GeneralObserver (TVOS)" */;
 			buildPhases = (
-				D446F1FA28D50D3F00A8D469 /* SwiftLint */,
 				D4F569DB283C3197002DF843 /* Sources */,
 			);
 			buildRules = (
@@ -322,8 +318,9 @@
 		D4C86C4224F7CAAB00373156 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1400;
+				LastUpgradeCheck = 1510;
 				ORGANIZATIONNAME = "Rift Valley Software, Inc.";
 				TargetAttributes = {
 					D4F569BB283C3148002DF843 = {
@@ -378,85 +375,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		D446F1F728D50D1300A8D469 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if command -v swiftlint\nthen\n    swiftlint\nfi\n";
-		};
-		D446F1F828D50D2100A8D469 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if command -v swiftlint\nthen\n    swiftlint\nfi\n";
-		};
-		D446F1F928D50D3100A8D469 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if command -v swiftlint\nthen\n    swiftlint\nfi\n";
-		};
-		D446F1FA28D50D3F00A8D469 /* SwiftLint */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = SwiftLint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if command -v swiftlint\nthen\n    swiftlint\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D4F569B9283C3148002DF843 /* Sources */ = {
@@ -587,6 +505,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -652,6 +571,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

@@ -1,5 +1,12 @@
 # RVS_GeneralObserver Change Log
 
+## 1.1.2
+
+- **January 6, 2024**
+
+- Added privacy declarations.
+- Had to remove SwiftLint, as it no longer works.
+
 ## 1.1.1
 
 - **September 16, 2022**
