@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1510"
+   LastUpgradeVersion = "2610"
    wasCreatedForAppExtension = "YES"
    version = "2.0">
    <BuildAction
@@ -16,8 +16,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D4F569BB283C3148002DF843"
-               BuildableName = "libRVS_GeneralObserver (MacOS).a"
-               BlueprintName = "RVS_GeneralObserver (MacOS)"
+               BuildableName = "libRVS_GeneralObserver.a"
+               BlueprintName = "RVS_GeneralObserver"
                ReferencedContainer = "container:RVS_GeneralObserver.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -80,8 +80,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D4F569BB283C3148002DF843"
-            BuildableName = "libRVS_GeneralObserver (MacOS).a"
-            BlueprintName = "RVS_GeneralObserver (MacOS)"
+            BuildableName = "libRVS_GeneralObserver.a"
+            BlueprintName = "RVS_GeneralObserver"
             ReferencedContainer = "container:RVS_GeneralObserver.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

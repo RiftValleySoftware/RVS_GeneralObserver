@@ -7,11 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D48559FA2EE77A53003D120E /* RVS_GeneralObserver.docc in Sources */ = {isa = PBXBuildFile; fileRef = D492F39627A41F1600DCC9FA /* RVS_GeneralObserver.docc */; };
 		D4F569E6283C31AF002DF843 /* RVS_GeneralObserver_Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D437271A24F93E3E000346BC /* RVS_GeneralObserver_Protocols.swift */; };
 		D4F569E7283C31B0002DF843 /* RVS_GeneralObserver_Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D437271A24F93E3E000346BC /* RVS_GeneralObserver_Protocols.swift */; };
 		D4F569E8283C31B0002DF843 /* RVS_GeneralObserver_Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D437271A24F93E3E000346BC /* RVS_GeneralObserver_Protocols.swift */; };
 		D4F569E9283C31B3002DF843 /* RVS_GeneralObserver_Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = D437271A24F93E3E000346BC /* RVS_GeneralObserver_Protocols.swift */; };
-		D4F569F2283C31D0002DF843 /* libRVS_GeneralObserver (MacOS).a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F569BC283C3148002DF843 /* libRVS_GeneralObserver (MacOS).a */; };
+		D4F569F2283C31D0002DF843 /* libRVS_GeneralObserver.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F569BC283C3148002DF843 /* libRVS_GeneralObserver.a */; };
 		D4F56A00283C31E0002DF843 /* libRVS_GeneralObserver (iOS).a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F569C9283C316C002DF843 /* libRVS_GeneralObserver (iOS).a */; };
 		D4F56A0E283C31EF002DF843 /* libRVS_GeneralObserver (WatchOS).a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F569D4283C3184002DF843 /* libRVS_GeneralObserver (WatchOS).a */; };
 		D4F56A1C283C31FE002DF843 /* libRVS_GeneralObserver (TVOS).a in Frameworks */ = {isa = PBXBuildFile; fileRef = D4F569DF283C3197002DF843 /* libRVS_GeneralObserver (TVOS).a */; };
@@ -58,7 +59,7 @@
 		D437271A24F93E3E000346BC /* RVS_GeneralObserver_Protocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RVS_GeneralObserver_Protocols.swift; sourceTree = "<group>"; };
 		D492F39627A41F1600DCC9FA /* RVS_GeneralObserver.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = RVS_GeneralObserver.docc; sourceTree = "<group>"; };
 		D4E744E024FAC24E008DCFA0 /* Warnings.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Warnings.xcconfig; sourceTree = "<group>"; };
-		D4F569BC283C3148002DF843 /* libRVS_GeneralObserver (MacOS).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libRVS_GeneralObserver (MacOS).a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D4F569BC283C3148002DF843 /* libRVS_GeneralObserver.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRVS_GeneralObserver.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F569C9283C316C002DF843 /* libRVS_GeneralObserver (iOS).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libRVS_GeneralObserver (iOS).a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F569D4283C3184002DF843 /* libRVS_GeneralObserver (WatchOS).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libRVS_GeneralObserver (WatchOS).a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4F569DF283C3197002DF843 /* libRVS_GeneralObserver (TVOS).a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libRVS_GeneralObserver (TVOS).a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,7 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D4F569F2283C31D0002DF843 /* libRVS_GeneralObserver (MacOS).a in Frameworks */,
+				D4F569F2283C31D0002DF843 /* libRVS_GeneralObserver.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,7 +154,7 @@
 		D4C86C4B24F7CAAB00373156 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D4F569BC283C3148002DF843 /* libRVS_GeneralObserver (MacOS).a */,
+				D4F569BC283C3148002DF843 /* libRVS_GeneralObserver.a */,
 				D4F569C9283C316C002DF843 /* libRVS_GeneralObserver (iOS).a */,
 				D4F569D4283C3184002DF843 /* libRVS_GeneralObserver (WatchOS).a */,
 				D4F569DF283C3197002DF843 /* libRVS_GeneralObserver (TVOS).a */,
@@ -184,9 +185,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D4F569BB283C3148002DF843 /* RVS_GeneralObserver (MacOS) */ = {
+		D4F569BB283C3148002DF843 /* RVS_GeneralObserver */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D4F569C2283C3148002DF843 /* Build configuration list for PBXNativeTarget "RVS_GeneralObserver (MacOS)" */;
+			buildConfigurationList = D4F569C2283C3148002DF843 /* Build configuration list for PBXNativeTarget "RVS_GeneralObserver" */;
 			buildPhases = (
 				D4F569B9283C3148002DF843 /* Sources */,
 			);
@@ -194,9 +195,9 @@
 			);
 			dependencies = (
 			);
-			name = "RVS_GeneralObserver (MacOS)";
+			name = RVS_GeneralObserver;
 			productName = "RVS_GeneralObserver (MacOS)";
-			productReference = D4F569BC283C3148002DF843 /* libRVS_GeneralObserver (MacOS).a */;
+			productReference = D4F569BC283C3148002DF843 /* libRVS_GeneralObserver.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 		D4F569C8283C316C002DF843 /* RVS_GeneralObserver (iOS) */ = {
@@ -320,7 +321,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1340;
-				LastUpgradeCheck = 1510;
+				LastUpgradeCheck = 2610;
 				ORGANIZATIONNAME = "Rift Valley Software, Inc.";
 				TargetAttributes = {
 					D4F569BB283C3148002DF843 = {
@@ -364,7 +365,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D4F569BB283C3148002DF843 /* RVS_GeneralObserver (MacOS) */,
+				D4F569BB283C3148002DF843 /* RVS_GeneralObserver */,
 				D4F569C8283C316C002DF843 /* RVS_GeneralObserver (iOS) */,
 				D4F569D3283C3184002DF843 /* RVS_GeneralObserver (WatchOS) */,
 				D4F569DE283C3197002DF843 /* RVS_GeneralObserver (TVOS) */,
@@ -382,6 +383,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D4F569E6283C31AF002DF843 /* RVS_GeneralObserver_Protocols.swift in Sources */,
+				D48559FA2EE77A53003D120E /* RVS_GeneralObserver.docc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -446,7 +448,7 @@
 /* Begin PBXTargetDependency section */
 		D4F569F4283C31D0002DF843 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = D4F569BB283C3148002DF843 /* RVS_GeneralObserver (MacOS) */;
+			target = D4F569BB283C3148002DF843 /* RVS_GeneralObserver */;
 			targetProxy = D4F569F3283C31D0002DF843 /* PBXContainerItemProxy */;
 		};
 		D4F56A02283C31E0002DF843 /* PBXTargetDependency */ = {
@@ -503,6 +505,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = KSAUGZFWP2;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -525,7 +528,9 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_MODULE_NAME = RVS_GeneralObserver;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TVOS_DEPLOYMENT_TARGET = 14.0;
@@ -569,6 +574,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = KSAUGZFWP2;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_USER_SCRIPT_SANDBOXING = YES;
@@ -584,7 +590,9 @@
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				PRODUCT_MODULE_NAME = RVS_GeneralObserver;
 				SDKROOT = iphoneos;
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				TVOS_DEPLOYMENT_TARGET = 14.0;
@@ -599,7 +607,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = KSAUGZFWP2;
 				EXECUTABLE_PREFIX = lib;
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				PRODUCT_MODULE_NAME = RVS_GeneralObserver;
@@ -615,7 +622,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = KSAUGZFWP2;
 				EXECUTABLE_PREFIX = lib;
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				PRODUCT_MODULE_NAME = RVS_GeneralObserver;
@@ -630,7 +636,6 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KSAUGZFWP2;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_MODULE_NAME = RVS_GeneralObserver;
@@ -646,7 +651,6 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KSAUGZFWP2;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_MODULE_NAME = RVS_GeneralObserver;
@@ -662,7 +666,6 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KSAUGZFWP2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_MODULE_NAME = RVS_GeneralObserver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -679,7 +682,6 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KSAUGZFWP2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_MODULE_NAME = RVS_GeneralObserver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -696,7 +698,6 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KSAUGZFWP2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_MODULE_NAME = RVS_GeneralObserver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -713,7 +714,6 @@
 			buildSettings = {
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KSAUGZFWP2;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_MODULE_NAME = RVS_GeneralObserver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -732,7 +732,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = KSAUGZFWP2;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
@@ -751,7 +750,6 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = YES;
-				DEVELOPMENT_TEAM = KSAUGZFWP2;
 				GENERATE_INFOPLIST_FILE = YES;
 				MACOSX_DEPLOYMENT_TARGET = 12.3;
 				MARKETING_VERSION = 1.0;
@@ -769,7 +767,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KSAUGZFWP2;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
@@ -787,7 +784,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KSAUGZFWP2;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				MARKETING_VERSION = 1.0;
@@ -805,7 +801,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KSAUGZFWP2;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.riftvalleysoftware.RVS-GeneralObserverTests--WatchOS-";
@@ -824,7 +819,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KSAUGZFWP2;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.riftvalleysoftware.RVS-GeneralObserverTests--WatchOS-";
@@ -843,7 +837,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KSAUGZFWP2;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.riftvalleysoftware.RVS-GeneralObserverTests--TVOS-";
@@ -862,7 +855,6 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = KSAUGZFWP2;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.riftvalleysoftware.RVS-GeneralObserverTests--TVOS-";
@@ -887,7 +879,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D4F569C2283C3148002DF843 /* Build configuration list for PBXNativeTarget "RVS_GeneralObserver (MacOS)" */ = {
+		D4F569C2283C3148002DF843 /* Build configuration list for PBXNativeTarget "RVS_GeneralObserver" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D4F569C3283C3148002DF843 /* Debug */,

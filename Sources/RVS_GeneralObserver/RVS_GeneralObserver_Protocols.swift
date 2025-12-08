@@ -19,7 +19,7 @@
 
     The Great Rift Valley Software Company: https://riftvalleysoftware.com
 
-    Verison: 1.1.2
+    Verison: 1.1.3
  */
 
 import Foundation   // Required for UUIDs
@@ -175,7 +175,7 @@ public protocol RVS_GeneralObservableProtocol: AnyObject {
      This is method that is called when observers subscribe or unsubscribe. The default does nothing.
      This is called AFTER the fact, and only if the subscription status changed.
      
-     - parameter: The Observer that subscribed or unsubscribed.
+     - parameter _: The Observer that subscribed or unsubscribed.
      - parameter didSubscribe: True, if this was a subscription. False, if not.
      */
     func observer(_: RVS_GeneralObserverProtocol, didSubscribe: Bool)
@@ -279,7 +279,7 @@ public protocol RVS_GeneralObserverProtocol {
     /**
      This will tell us whether or not we are subscribed to the given observable.
      
-     - parameter: The Observable we're testing.
+     - parameter _: The Observable we're testing.
      */
     func amISubscribed(_: RVS_GeneralObservableProtocol) -> Bool
     
@@ -287,7 +287,7 @@ public protocol RVS_GeneralObserverProtocol {
     /**
      This is how an observer unsubscribes itself from an Observable.
      
-     - parameter: The Observable from which we're unsubscribing.
+     - parameter _: The Observable from which we're unsubscribing.
 
      - returns: True, if the unsubscription was successful.
      */
@@ -298,7 +298,7 @@ public protocol RVS_GeneralObserverProtocol {
     /**
      Subscribes us to an Observable.
      
-     - parameter: The Observable we're subscribing to.
+     - parameter inObservableInstance: The Observable we're subscribing to.
      - returns: Our instance, or nil, if the subscription failed. Can be ignored.
      */
     @discardableResult
@@ -315,7 +315,7 @@ public protocol RVS_GeneralObserverProtocol {
 
      In the default implementation, this is called in the subscription execution context, so that will be the thread used for the callback.
 
-     - parameter: The Observable we've subscribed to.
+     - parameter _: The Observable we've subscribed to.
      */
     func subscribedTo(_: RVS_GeneralObservableProtocol)
     
@@ -327,7 +327,7 @@ public protocol RVS_GeneralObserverProtocol {
      
      In the default implementation, this is called in the unsubscription execution context, so that will be the thread used for the callback.
 
-     - parameter: The Observable we've unsubscribed from.
+     - parameter _: The Observable we've unsubscribed from.
      */
     func unsubscribedFrom(_: RVS_GeneralObservableProtocol)
 }
@@ -404,7 +404,7 @@ public protocol RVS_GeneralObserverSubTrackerProtocol: AnyObject, RVS_GeneralObs
 
      In the default implementation, this is called in the subscription execution context, so that will be the thread used for the callback.
 
-     - parameter: The Observable we've subscribed to.
+     - parameter inObservableInstance: The Observable we've subscribed to.
      */
     func internalSubscribedTo(_ inObservableInstance: RVS_GeneralObservableProtocol)
     
@@ -418,7 +418,7 @@ public protocol RVS_GeneralObserverSubTrackerProtocol: AnyObject, RVS_GeneralObs
      
      In the default implementation, this is called in the unsubscription execution context, so that will be the thread used for the callback.
 
-     - parameter: The Observable we've unsubscribed from.
+     - parameter inObservableInstance: The Observable we've unsubscribed from.
      */
     func internalUnsubscribedFrom(_ inObservableInstance: RVS_GeneralObservableProtocol)
 }
