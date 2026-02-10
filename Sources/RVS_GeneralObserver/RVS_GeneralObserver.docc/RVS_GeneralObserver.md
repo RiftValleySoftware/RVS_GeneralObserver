@@ -1,5 +1,7 @@
 # ``RVS_GeneralObserver``
 
+![](icon.png)
+
 This is a general-purpose set of protocols that are designed to provide a simple infrastructure for a basic Observer implementation.
 
 ## Overview

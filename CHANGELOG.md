@@ -1,5 +1,11 @@
 # RVS_GeneralObserver Change Log
 
+## 1.1.5
+
+- **February 10, 2026**
+
+- Improved code documentation.
+
 ## 1.1.4
 
 - **December 8, 2025**
